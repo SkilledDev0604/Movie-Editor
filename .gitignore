@@ -11,6 +11,8 @@ db.sqlite3-journal
 # Environments
 .env
 .venv
+.paw
+paw/
 env/
 venv/
 ENV/
@@ -20,3 +22,7 @@ venv.bak/
 #vs code
 .vscode
 .vscode/
+
+#video
+
+static/videos/
