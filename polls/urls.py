@@ -2,13 +2,15 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import (
-    page_view
+    product_view,
+    preview_view
 )
 
 app_name = 'polls'
 
 urlpatterns = [
-    path('', page_view, name='polls'),
+    path('product/', product_view, name='product'),
+    path('preview/', preview_view, name='preview'),
 ]
 
 if settings.DEBUG:
