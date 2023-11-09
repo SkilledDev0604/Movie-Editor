@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 {% extends 'shared_layout/base.html' %} {% load static %} {% block title %}
 create video {% endblock %} {% block customcss %}
+
+{% comment %} <link
+  data-minify="1"
+  rel="stylesheet"
+  href="{% static 'css/bootstrap.min.css' %}"
+/> {% endcomment %}
+<script
+  data-minify="1"
+  defer=""
+  src="{% static 'js/jquery.min.js.download' %}"
+  data-rocket-status="executed"
+></script>
+<script
+  data-minify="1"
+  defer=""
+  src="./Paw Patrol video invitation 01 Free Online 2023 - Video Invitaciones Editables_files/bootstrap.min.js.download"
+  data-rocket-status="executed"
+></script>
+<link
+  data-minify="1"
+  rel="stylesheet"
+  href="{% static 'css/dropzone.css' %}"
+/>
+<link
+  data-minify="1"
+  href="{% static 'css/cropper.css' %}"
+  rel="stylesheet"
+/>
 <style type="text/css">
   img.wp-smiley,
   img.emoji {
@@ -711,38 +739,6 @@ create video {% endblock %} {% block customcss %}
   src="{% static 'js/s-202344.js.download'%}"
   id="woocommerce-analytics-js"
 ></script>
-<link
-  rel="https://api.w.org/"
-  href="https://www.videoinvitacioneseditables.com/en/wp-json/"
-/>
-<link
-  rel="alternate"
-  type="application/json"
-  href="https://www.videoinvitacioneseditables.com/en/wp-json/wp/v2/product/363"
-/>
-<link
-  rel="EditURI"
-  type="application/rsd+xml"
-  title="RSD"
-  href="https://www.videoinvitacioneseditables.com/xmlrpc.php?rsd"
-/>
-<meta name="generator" content="WordPress 6.3.2" />
-<link
-  rel="shortlink"
-  href="https://www.videoinvitacioneseditables.com/en/?p=363"
-/>
-<link
-  rel="alternate"
-  type="application/json+oembed"
-  href="https://www.videoinvitacioneseditables.com/en/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.videoinvitacioneseditables.com%2Fen%2Fproduct%2Fpaw-patrol-video-invitation-01%2F"
-/>
-<link
-  rel="alternate"
-  type="text/xml+oembed"
-  href="https://www.videoinvitacioneseditables.com/en/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.videoinvitacioneseditables.com%2Fen%2Fproduct%2Fpaw-patrol-video-invitation-01%2F&amp;format=xml"
-/>
-<meta name="generator" content="WPML ver:4.6.6 stt:1,2;" />
-
 <!-- This website runs the Product Feed PRO for WooCommerce by AdTribes.io plugin - version 13.0.6 -->
 <!-- Easy Pixels: Global site tag (gtag.js) - Google Analytics -->
 <script
@@ -766,7 +762,6 @@ create video {% endblock %} {% block customcss %}
     opacity: 1 !important;
   }
 </style>
-<meta name="p:domain_verify" content="2a49691955bef79f7347dafe4aa10f9a" />
 <style>
   .msgoverlay {
     position: fixed;
@@ -864,7 +859,7 @@ create video {% endblock %} {% block customcss %}
     }
   </style></noscript
 >
-<link
+{% comment %} <link
   rel="icon"
   href="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/VideoInvitacionesEditables-logo-100x100.png"
   sizes="32x32"
@@ -881,7 +876,7 @@ create video {% endblock %} {% block customcss %}
 <meta
   name="msapplication-TileImage"
   content="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/VideoInvitacionesEditables-logo.png"
-/>
+/> {% endcomment %}
 <style type="text/css" id="wp-custom-css">
   #vista-previa video {
     width: 50% !important;
@@ -1006,7 +1001,7 @@ create video {% endblock %} {% block customcss %}
 {% endif %}
 <div id="content" class="site-content container right-sidebar">
   <div class="content-inside">
-    <div id="primary" class="content-area">
+    <div id="primary">
       <main id="main" class="site-main" role="main">
         <article
           id="post-363"
@@ -1057,7 +1052,7 @@ create video {% endblock %} {% block customcss %}
                         class="woocommerce-product-gallery__image yith_featured_content"
                         data-thumb="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/videoplaceholder-100x100.jpg"
                       >
-                        <div class="ywcfav-video-content youtube _16_9">
+                        <div class="">
                           <figure class="wp-block-video">
                             <video
                               controls=""
@@ -1142,7 +1137,7 @@ create video {% endblock %} {% block customcss %}
                       </div>
                       <p style="text-align: center"></p>
                       <div class="invitacontainer">
-                        <form id="forminvita" method="post" name="forminvita">
+                        <form id="forminvita" method="post" name="forminvita" enctype="multipart/form-data"> 
                           {%csrf_token%}
                           <div class="row">
                             <div class="col-100">
@@ -1359,103 +1354,33 @@ create video {% endblock %} {% block customcss %}
                               >
                             </div>
                           </div>
-                          <div id="foto_div" class="row" >
+                          <div id="foto_div" class="row" style="display: none;">
                             <div class="col-100">
                               <div class="image_area">
-                                <label for="upload_image">
+                                <label for="id_image"> 
                                   <img
                                     width="403"
                                     height="400"
                                     src="{% static 'images/polls/user.png' %}"
                                     id="uploaded_image"
                                     class="img-responsive img-circle"
-                                    data-lazy-src="{% static 'images/polls/user.png' %}"
-                                  /><noscript>
-                                    <img
-                                      width="403"
-                                      height="400"
-                                      src="https://www.videoinvitacioneseditables.com/en/photo/user.png"
-                                      id="uploaded_image"
-                                      class="img-responsive img-circle"
-                                    />
-                                  </noscript>
-                                  <input
-                                    type="text"
-                                    style="display: none"
-                                    id="imgupload"
-                                    name="imgupload"
-                                    value="https://www.videoinvitacioneseditables.com/en/photo/user.png"
                                   />
                                   <div class="overlay">
                                     <div class="text">
                                       Click to change the photo
                                     </div>
                                   </div>
-                                  <input
+                                  <div style="display: none;">
+                                    {{form.as_p}}
+                                  </div>
+                                  {% comment %} <input
                                     type="file"
                                     name="image"
                                     class="image"
                                     id="upload_image"
                                     style="display: none"
-                                  />
+                                  /> {% endcomment %}
                                 </label>
-                              </div>
-                            </div>
-                          </div>
-                          <div
-                            class="modal fade"
-                            id="modal"
-                            tabindex="-1"
-                            role="dialog"
-                            aria-labelledby="modalLabel"
-                            aria-hidden="true"
-                          >
-                            <div class="modal-dialog modal-lg" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title">
-                                    Crop the photo before uploading it
-                                  </h5>
-                                  <button
-                                    type="button"
-                                    class="close"
-                                    data-dismiss="modal"
-                                    aria-label="Close"
-                                  >
-                                    <span aria-hidden="true">×</span>
-                                  </button>
-                                </div>
-                                <div class="modal-body">
-                                  <div class="img-container">
-                                    <div class="row">
-                                      <div class="col-md-8">
-                                        <img
-                                          src="https://www.videoinvitacioneseditables.com/en/product/paw-patrol-video-invitation-01/"
-                                          id="sample_image"
-                                        />
-                                      </div>
-                                      <div class="col-md-4">
-                                        <div class="preview"></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="modal-footer">
-                                  <button
-                                    type="button"
-                                    id="crop"
-                                    class="btn btn-primary"
-                                  >
-                                    Crop
-                                  </button>
-                                  <button
-                                    type="button"
-                                    class="btn btn-secondary"
-                                    data-dismiss="modal"
-                                  >
-                                    Cancel
-                                  </button>
-                                </div>
                               </div>
                             </div>
                           </div>
@@ -1469,6 +1394,7 @@ create video {% endblock %} {% block customcss %}
                               />
                             </div>
                           </div>
+                          
                         </form>
                         <div id="overlay">
                           <div class="cv-spinner">
@@ -1549,447 +1475,8 @@ create video {% endblock %} {% block customcss %}
                           <strong>Paw Patrol video invitation</strong>, you can
                           go to our contact section to answer your question.<br /><br />
                         </p>
-                        <p style="text-align: left">
-                          <strong>Note:</strong> We do not make external edits
-                          to the preview.
-                        </p>
-                        <p style="text-align: left">&nbsp;</p>
                       </div>
                     </div>
-
-                    <section class="up-sells upsells products">
-                      <h2>You may also like…</h2>
-
-                      <ul class="products columns-4">
-                        <li
-                          class="product type-product post-350 status-publish first instock product_cat-birthday product_cat-paw-patrol-en has-post-thumbnail shipping-taxable product-type-simple"
-                        >
-                          <a
-                            href="https://www.videoinvitacioneseditables.com/en/product/skye-video-invitation-01-paw-patrol/"
-                            class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
-                          >
-                            <picture
-                              class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                              decoding="async"
-                            >
-                              <source
-                                type="image/webp"
-                                data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-300x300.jpg.webp 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-100x100.jpg.webp 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-600x600.jpg.webp 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-150x150.jpg.webp 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-768x768.jpg.webp 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis.jpg.webp 800w"
-                                srcset="
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-300x300.jpg.webp 300w,
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-100x100.jpg.webp 100w,
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-600x600.jpg.webp 600w,
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-150x150.jpg.webp 150w,
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-768x768.jpg.webp 768w,
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis.jpg.webp         800w
-                                "
-                                data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                                sizes="(max-width: 300px) 100vw, 300px"
-                              />
-                              <img
-                                width="300"
-                                height="300"
-                                src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-300x300.jpg"
-                                alt="Free Skye video invitation"
-                                decoding="async"
-                                data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-300x300.jpg 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-100x100.jpg 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-600x600.jpg 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-150x150.jpg 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-768x768.jpg 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis.jpg 800w"
-                                data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                                data-lazy-src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-300x300.jpg"
-                                data-ll-status="loaded"
-                                class="entered lazyloaded"
-                                sizes="(max-width: 300px) 100vw, 300px"
-                                srcset="
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-300x300.jpg 300w,
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-100x100.jpg 100w,
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-600x600.jpg 600w,
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-150x150.jpg 150w,
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-768x768.jpg 768w,
-                                  https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis.jpg         800w
-                                "
-                              />
-                            </picture>
-                            <noscript>
-                              <picture
-                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                decoding="async"
-                              >
-                                <source
-                                  type="image/webp"
-                                  srcset="
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-300x300.jpg.webp 300w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-100x100.jpg.webp 100w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-600x600.jpg.webp 600w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-150x150.jpg.webp 150w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-768x768.jpg.webp 768w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis.jpg.webp         800w
-                                  "
-                                  sizes="(max-width: 300px) 100vw, 300px"
-                                />
-                                <img
-                                  width="300"
-                                  height="300"
-                                  src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-300x300.jpg"
-                                  alt="Free Skye video invitation"
-                                  decoding="async"
-                                  srcset="
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-300x300.jpg 300w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-100x100.jpg 100w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-600x600.jpg 600w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-150x150.jpg 150w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis-768x768.jpg 768w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-skye-aw-patrol-gratis.jpg         800w
-                                  "
-                                  sizes="(max-width: 300px) 100vw, 300px"
-                                />
-                              </picture>
-                            </noscript>
-                            <h2 class="woocommerce-loop-product__title">
-                              Skye video invitation 01 (Paw Patrol)
-                            </h2> </a
-                          ><a
-                            href="https://www.videoinvitacioneseditables.com/en/product/skye-video-invitation-01-paw-patrol/"
-                            data-quantity="1"
-                            class="button product_type_simple"
-                            data-product_id="350"
-                            data-product_sku="skye01"
-                            aria-label="Read more about “Skye video invitation 01 (Paw Patrol)”"
-                            aria-describedby=""
-                            rel="nofollow"
-                            >Read more</a
-                          >
-                        </li>
-                      </ul>
-                    </section>
-
-                    <section class="related products">
-                      <h2>Related products</h2>
-
-                      <ul class="products columns-4">
-                        <li
-                          class="product type-product post-369 status-publish first instock product_cat-the-little-mermaid product_cat-birthday has-post-thumbnail shipping-taxable product-type-simple"
-                        >
-                          <a
-                            href="https://www.videoinvitacioneseditables.com/en/product/the-little-mermaid-video-invitation-01/"
-                            class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
-                          >
-                            <picture
-                              class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                              decoding="async"
-                            >
-                              <source
-                                type="image/webp"
-                                data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-300x300.jpg.webp 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-100x100.jpg.webp 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-600x600.jpg.webp 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-150x150.jpg.webp 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-768x768.jpg.webp 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis.jpg.webp 800w"
-                                srcset="
-                                  data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E
-                                "
-                                data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                              />
-                              <img
-                                width="300"
-                                height="300"
-                                src="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E"
-                                alt="Video invitación de La Sirenita gratis"
-                                decoding="async"
-                                data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-300x300.jpg 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-100x100.jpg 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-600x600.jpg 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-150x150.jpg 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-768x768.jpg 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis.jpg 800w"
-                                data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                                data-lazy-src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-300x300.jpg"
-                              />
-                            </picture>
-                            <noscript>
-                              <picture
-                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                decoding="async"
-                              >
-                                <source
-                                  type="image/webp"
-                                  srcset="
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-300x300.jpg.webp 300w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-100x100.jpg.webp 100w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-600x600.jpg.webp 600w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-150x150.jpg.webp 150w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-768x768.jpg.webp 768w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis.jpg.webp         800w
-                                  "
-                                  sizes="(max-width: 300px) 100vw, 300px"
-                                />
-                                <img
-                                  width="300"
-                                  height="300"
-                                  src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-300x300.jpg"
-                                  alt="Video invitación de La Sirenita gratis"
-                                  decoding="async"
-                                  srcset="
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-300x300.jpg 300w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-100x100.jpg 100w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-600x600.jpg 600w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-150x150.jpg 150w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis-768x768.jpg 768w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-la-sirenita-gratis.jpg         800w
-                                  "
-                                  sizes="(max-width: 300px) 100vw, 300px"
-                                />
-                              </picture>
-                            </noscript>
-                            <h2 class="woocommerce-loop-product__title">
-                              The Little Mermaid video invitation 01
-                            </h2> </a
-                          ><a
-                            href="https://www.videoinvitacioneseditables.com/en/product/the-little-mermaid-video-invitation-01/"
-                            data-quantity="1"
-                            class="button product_type_simple"
-                            data-product_id="369"
-                            data-product_sku="lasirenita01"
-                            aria-label="Read more about “The Little Mermaid video invitation 01”"
-                            aria-describedby=""
-                            rel="nofollow"
-                            >Read more</a
-                          >
-                        </li>
-
-                        <li
-                          class="product type-product post-345 status-publish instock product_cat-birthday product_cat-minnie-mouse-en has-post-thumbnail shipping-taxable product-type-simple"
-                        >
-                          <a
-                            href="https://www.videoinvitacioneseditables.com/en/product/minnie-mouse-video-invitation-01/"
-                            class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
-                          >
-                            <picture
-                              class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                              decoding="async"
-                            >
-                              <source
-                                type="image/webp"
-                                data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-300x300.jpg.webp 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-100x100.jpg.webp 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-600x600.jpg.webp 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-150x150.jpg.webp 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-768x768.jpg.webp 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis.jpg.webp 800w"
-                                srcset="
-                                  data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E
-                                "
-                                data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                              />
-                              <img
-                                width="300"
-                                height="300"
-                                src="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E"
-                                alt="Free Minnie Mouse video invitation"
-                                decoding="async"
-                                data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-300x300.jpg 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-100x100.jpg 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-600x600.jpg 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-150x150.jpg 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-768x768.jpg 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis.jpg 800w"
-                                data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                                data-lazy-src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-300x300.jpg"
-                              />
-                            </picture>
-                            <noscript>
-                              <picture
-                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                decoding="async"
-                              >
-                                <source
-                                  type="image/webp"
-                                  srcset="
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-300x300.jpg.webp 300w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-100x100.jpg.webp 100w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-600x600.jpg.webp 600w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-150x150.jpg.webp 150w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-768x768.jpg.webp 768w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis.jpg.webp         800w
-                                  "
-                                  sizes="(max-width: 300px) 100vw, 300px"
-                                />
-                                <img
-                                  width="300"
-                                  height="300"
-                                  src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-300x300.jpg"
-                                  alt="Free Minnie Mouse video invitation"
-                                  decoding="async"
-                                  srcset="
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-300x300.jpg 300w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-100x100.jpg 100w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-600x600.jpg 600w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-150x150.jpg 150w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis-768x768.jpg 768w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/12/video-invitacion-de-minnie-mouse-gratis.jpg         800w
-                                  "
-                                  sizes="(max-width: 300px) 100vw, 300px"
-                                />
-                              </picture>
-                            </noscript>
-                            <h2 class="woocommerce-loop-product__title">
-                              Minnie Mouse video invitation 01
-                            </h2> </a
-                          ><a
-                            href="https://www.videoinvitacioneseditables.com/en/product/minnie-mouse-video-invitation-01/"
-                            data-quantity="1"
-                            class="button product_type_simple"
-                            data-product_id="345"
-                            data-product_sku="minnie01"
-                            aria-label="Read more about “Minnie Mouse video invitation 01”"
-                            aria-describedby=""
-                            rel="nofollow"
-                            >Read more</a
-                          >
-                        </li>
-
-                        <li
-                          class="product type-product post-380 status-publish instock product_cat-frozen-en product_cat-birthday has-post-thumbnail shipping-taxable product-type-simple"
-                        >
-                          <a
-                            href="https://www.videoinvitacioneseditables.com/en/product/frozen-video-invitation-01/"
-                            class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
-                          >
-                            <picture
-                              class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                              decoding="async"
-                            >
-                              <source
-                                type="image/webp"
-                                data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-300x300.jpg.webp 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-100x100.jpg.webp 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-600x600.jpg.webp 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-150x150.jpg.webp 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-768x768.jpg.webp 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis.jpg.webp 800w"
-                                srcset="
-                                  data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E
-                                "
-                                data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                              />
-                              <img
-                                width="300"
-                                height="300"
-                                src="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E"
-                                alt="Video invitación de Frozen gratis"
-                                decoding="async"
-                                data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-300x300.jpg 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-100x100.jpg 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-600x600.jpg 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-150x150.jpg 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-768x768.jpg 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis.jpg 800w"
-                                data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                                data-lazy-src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-300x300.jpg"
-                              />
-                            </picture>
-                            <noscript>
-                              <picture
-                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                decoding="async"
-                              >
-                                <source
-                                  type="image/webp"
-                                  srcset="
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-300x300.jpg.webp 300w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-100x100.jpg.webp 100w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-600x600.jpg.webp 600w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-150x150.jpg.webp 150w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-768x768.jpg.webp 768w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis.jpg.webp         800w
-                                  "
-                                  sizes="(max-width: 300px) 100vw, 300px"
-                                />
-                                <img
-                                  width="300"
-                                  height="300"
-                                  src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-300x300.jpg"
-                                  alt="Video invitación de Frozen gratis"
-                                  decoding="async"
-                                  srcset="
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-300x300.jpg 300w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-100x100.jpg 100w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-600x600.jpg 600w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-150x150.jpg 150w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis-768x768.jpg 768w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/03/video-invitacion-de-frozen-gratis.jpg         800w
-                                  "
-                                  sizes="(max-width: 300px) 100vw, 300px"
-                                />
-                              </picture>
-                            </noscript>
-                            <h2 class="woocommerce-loop-product__title">
-                              Frozen video invitation 01
-                            </h2> </a
-                          ><a
-                            href="https://www.videoinvitacioneseditables.com/en/product/frozen-video-invitation-01/"
-                            data-quantity="1"
-                            class="button product_type_simple"
-                            data-product_id="380"
-                            data-product_sku="frozen01"
-                            aria-label="Read more about “Frozen video invitation 01”"
-                            aria-describedby=""
-                            rel="nofollow"
-                            >Read more</a
-                          >
-                        </li>
-
-                        <li
-                          class="product type-product post-361 status-publish last instock product_cat-birthday product_cat-cars-en has-post-thumbnail shipping-taxable product-type-simple"
-                        >
-                          <a
-                            href="https://www.videoinvitacioneseditables.com/en/product/cars-video-invitation-01/"
-                            class="woocommerce-LoopProduct-link woocommerce-loop-product__link"
-                          >
-                            <picture
-                              class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                              decoding="async"
-                            >
-                              <source
-                                type="image/webp"
-                                data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-300x300.jpg.webp 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-100x100.jpg.webp 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-600x600.jpg.webp 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-150x150.jpg.webp 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-768x768.jpg.webp 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis.jpg.webp 800w"
-                                srcset="
-                                  data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E
-                                "
-                                data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                              />
-                              <img
-                                width="300"
-                                height="300"
-                                src="data:image/svg+xml,%3Csvg%20xmlns=&#39;http://www.w3.org/2000/svg&#39;%20viewBox=&#39;0%200%20300%20300&#39;%3E%3C/svg%3E"
-                                alt="Free Cars video invitation"
-                                decoding="async"
-                                data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-300x300.jpg 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-100x100.jpg 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-600x600.jpg 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-150x150.jpg 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-768x768.jpg 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis.jpg 800w"
-                                data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                                data-lazy-src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-300x300.jpg"
-                              />
-                            </picture>
-                            <noscript>
-                              <picture
-                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                                decoding="async"
-                              >
-                                <source
-                                  type="image/webp"
-                                  srcset="
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-300x300.jpg.webp 300w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-100x100.jpg.webp 100w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-600x600.jpg.webp 600w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-150x150.jpg.webp 150w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-768x768.jpg.webp 768w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis.jpg.webp         800w
-                                  "
-                                  sizes="(max-width: 300px) 100vw, 300px"
-                                />
-                                <img
-                                  width="300"
-                                  height="300"
-                                  src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-300x300.jpg"
-                                  alt="Free Cars video invitation"
-                                  decoding="async"
-                                  srcset="
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-300x300.jpg 300w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-100x100.jpg 100w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-600x600.jpg 600w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-150x150.jpg 150w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis-768x768.jpg 768w,
-                                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-cars-editable-gratis.jpg         800w
-                                  "
-                                  sizes="(max-width: 300px) 100vw, 300px"
-                                />
-                              </picture>
-                            </noscript>
-                            <h2 class="woocommerce-loop-product__title">
-                              Cars video invitation 01
-                            </h2> </a
-                          ><a
-                            href="https://www.videoinvitacioneseditables.com/en/product/cars-video-invitation-01/"
-                            data-quantity="1"
-                            class="button product_type_simple"
-                            data-product_id="361"
-                            data-product_sku="cars01"
-                            aria-label="Read more about “Cars video invitation 01”"
-                            aria-describedby=""
-                            rel="nofollow"
-                            >Read more</a
-                          >
-                        </li>
-                      </ul>
-                    </section>
                   </div>
                 </div>
               </div>
@@ -2005,908 +1492,48 @@ create video {% endblock %} {% block customcss %}
       <!-- #main -->
     </div>
     <!-- #primary -->
-
-    <div id="secondary" class="widget-area sidebar" role="complementary">
-      <aside id="aws_widget-3" class="widget widget_aws_widget">
-        <h2 class="widget-title"><span>Search</span></h2>
-        <div
-          class="aws-container"
-          data-id="1"
-          data-url="/en/?wc-ajax=aws_action"
-          data-siteurl="https://www.videoinvitacioneseditables.com/en/"
-          data-lang="en"
-          data-show-loader="true"
-          data-show-more="true"
-          data-ajax-search="true"
-          data-show-page="true"
-          data-show-clear="true"
-          data-mobile-screen="false"
-          data-buttons-order="1"
-          data-target-blank="false"
-          data-use-analytics="false"
-          data-min-chars="1"
-          data-filters=""
-          data-init-filter="1"
-          data-timeout="300"
-          data-notfound="No se ha encontrado nada"
-          data-more="Ver todos los resultados"
-          data-is-mobile="false"
-          data-page-id="363"
-          data-tax=""
-          data-sku="SKU: "
-          data-item-added="Item added"
-          data-sale-badge="Sale!"
-        >
-          <form
-            class="aws-search-form aws-show-clear"
-            action="https://www.videoinvitacioneseditables.com/en/"
-            method="get"
-            role="search"
-          >
-            <div class="aws-wrapper">
-              <label class="aws-search-label" for="6547c535d0149">Buscar</label
-              ><input
-                type="search"
-                name="s"
-                id="6547c535d0149"
-                value=""
-                class="aws-search-field"
-                placeholder="Buscar"
-                autocomplete="off"
-              />
-              <input type="hidden" name="post_type" value="product" />
-              <input type="hidden" name="type_aws" value="true" />
-              <input type="hidden" name="aws_id" value="1" />
-              <input
-                type="hidden"
-                name="aws_filter"
-                class="awsFilterHidden"
-                value="1"
-              />
-              <input type="hidden" name="lang" value="en" />
-              <div class="aws-search-clear">
-                <span>×</span>
-              </div>
-              <div class="aws-loader"></div>
-            </div>
-          </form>
-        </div>
-      </aside>
-      <aside id="block-6" class="widget widget_block widget_media_image">
-        <figure class="wp-block-image size-large">
-          <a
-            href="https://www.tuproductovirtual.com/categoria-producto/invitaciones-2/video-invitaciones/"
-            target="_blank"
-            rel=" noreferrer noopener"
-          >
-            <img
-              decoding="async"
-              src="{% static 'images/polls/Video-Invitaciones-Tu-Producto-Virtual.jpg' %}"
-              alt=""
-              data-lazy-src="https://www.invitacioneseditables.com/wp-content/uploads/2022/03/Video-Invitaciones-Tu-Producto-Virtual.jpg"
-              data-ll-status="loaded"
-              class="entered lazyloaded"
-            /><noscript>
-              <img
-                decoding="async"
-                src="https://www.invitacioneseditables.com/wp-content/uploads/2022/03/Video-Invitaciones-Tu-Producto-Virtual.jpg"
-                alt=""
-              />
-            </noscript>
-          </a>
-        </figure>
-      </aside>
-      <aside
-        id="woocommerce_recently_viewed_products-3"
-        class="widget woocommerce widget_recently_viewed_products"
-      >
-        <h2 class="widget-title"><span>Recently viewed products</span></h2>
-        <ul class="product_list_widget">
-          <li>
-            <a
-              href="https://www.videoinvitacioneseditables.com/en/product/paw-patrol-video-invitation-01/"
-            >
-              <picture
-                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                decoding="async"
-              >
-                <source
-                  type="image/webp"
-                  data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-300x300.png.webp 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-100x100.png.webp 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-600x600.png.webp 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-150x150.png.webp 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-768x768.png.webp 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01.png.webp 800w"
-                  srcset="
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-300x300.png.webp 300w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-100x100.png.webp 100w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-600x600.png.webp 600w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-150x150.png.webp 150w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-768x768.png.webp 768w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01.png.webp         800w
-                  "
-                  data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                  sizes="(max-width: 300px) 100vw, 300px"
-                />
-                <img
-                  width="300"
-                  height="300"
-                  src="{% static 'images/polls/Video-invitacion-editable-de-paw-patrol-01-300x300.png' %}"
-                  alt="Free Paw Patrol video invitation"
-                  decoding="async"
-                  data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-300x300.png 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-100x100.png 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-600x600.png 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-150x150.png 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-768x768.png 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01.png 800w"
-                  data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                  data-lazy-src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-300x300.png"
-                  data-ll-status="loaded"
-                  class="entered lazyloaded"
-                  sizes="(max-width: 300px) 100vw, 300px"
-                  srcset="
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-300x300.png 300w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-100x100.png 100w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-600x600.png 600w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-150x150.png 150w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-768x768.png 768w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01.png         800w
-                  "
-                />
-              </picture>
-              <noscript>
-                <picture
-                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                  decoding="async"
-                >
-                  <source
-                    type="image/webp"
-                    srcset="
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-300x300.png.webp 300w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-100x100.png.webp 100w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-600x600.png.webp 600w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-150x150.png.webp 150w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-768x768.png.webp 768w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01.png.webp         800w
-                    "
-                    sizes="(max-width: 300px) 100vw, 300px"
-                  />
-                  <img
-                    width="300"
-                    height="300"
-                    src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-300x300.png"
-                    alt="Free Paw Patrol video invitation"
-                    decoding="async"
-                    srcset="
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-300x300.png 300w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-100x100.png 100w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-600x600.png 600w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-150x150.png 150w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01-768x768.png 768w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-editable-de-paw-patrol-01.png         800w
-                    "
-                    sizes="(max-width: 300px) 100vw, 300px"
-                  />
-                </picture>
-              </noscript>
-              <span class="product-title">Paw Patrol video invitation 01</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.videoinvitacioneseditables.com/en/product/rapunzel-video-invitation-01/"
-            >
-              <picture
-                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                decoding="async"
-              >
-                <source
-                  type="image/webp"
-                  data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-300x300.jpg.webp 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-100x100.jpg.webp 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-600x600.jpg.webp 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-150x150.jpg.webp 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-768x768.jpg.webp 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis.jpg.webp 800w"
-                  srcset="
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-300x300.jpg.webp 300w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-100x100.jpg.webp 100w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-600x600.jpg.webp 600w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-150x150.jpg.webp 150w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-768x768.jpg.webp 768w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis.jpg.webp         800w
-                  "
-                  data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                  sizes="(max-width: 300px) 100vw, 300px"
-                />
-                <img
-                  width="300"
-                  height="300"
-                  src="{% static 'images/video-invitacion-de-rapunzel-gratis-300x300.jpg' %}"
-                  alt="Free Rapunzel video invitation"
-                  decoding="async"
-                  data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-300x300.jpg 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-100x100.jpg 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-600x600.jpg 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-150x150.jpg 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-768x768.jpg 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis.jpg 800w"
-                  data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                  data-lazy-src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-300x300.jpg"
-                  data-ll-status="loaded"
-                  class="entered lazyloaded"
-                  sizes="(max-width: 300px) 100vw, 300px"
-                  srcset="
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-300x300.jpg 300w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-100x100.jpg 100w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-600x600.jpg 600w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-150x150.jpg 150w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-768x768.jpg 768w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis.jpg         800w
-                  "
-                />
-              </picture>
-              <noscript>
-                <picture
-                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                  decoding="async"
-                >
-                  <source
-                    type="image/webp"
-                    srcset="
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-300x300.jpg.webp 300w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-100x100.jpg.webp 100w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-600x600.jpg.webp 600w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-150x150.jpg.webp 150w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-768x768.jpg.webp 768w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis.jpg.webp         800w
-                    "
-                    sizes="(max-width: 300px) 100vw, 300px"
-                  />
-                  <img
-                    width="300"
-                    height="300"
-                    src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-300x300.jpg"
-                    alt="Free Rapunzel video invitation"
-                    decoding="async"
-                    srcset="
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-300x300.jpg 300w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-100x100.jpg 100w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-600x600.jpg 600w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-150x150.jpg 150w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis-768x768.jpg 768w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/02/video-invitacion-de-rapunzel-gratis.jpg         800w
-                    "
-                    sizes="(max-width: 300px) 100vw, 300px"
-                  />
-                </picture>
-              </noscript>
-              <span class="product-title">Rapunzel video invitation 01</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.videoinvitacioneseditables.com/en/product/sonic-video-invitation-01/"
-            >
-              <picture
-                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                decoding="async"
-              >
-                <source
-                  type="image/webp"
-                  data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-300x300.jpg.webp 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-100x100.jpg.webp 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-600x600.jpg.webp 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-150x150.jpg.webp 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-768x768.jpg.webp 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2.jpg.webp 800w"
-                  srcset="
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-300x300.jpg.webp 300w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-100x100.jpg.webp 100w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-600x600.jpg.webp 600w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-150x150.jpg.webp 150w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-768x768.jpg.webp 768w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2.jpg.webp         800w
-                  "
-                  data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                  sizes="(max-width: 300px) 100vw, 300px"
-                />
-                <img
-                  width="300"
-                  height="300"
-                  src="{% static 'images/polls/Video-invitacion-gratis-de-sonic-2-300x300.jpg' %}"
-                  alt="Free Sonic video invitation"
-                  decoding="async"
-                  data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-300x300.jpg 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-100x100.jpg 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-600x600.jpg 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-150x150.jpg 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-768x768.jpg 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2.jpg 800w"
-                  data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                  data-lazy-src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-300x300.jpg"
-                  data-ll-status="loaded"
-                  class="entered lazyloaded"
-                  sizes="(max-width: 300px) 100vw, 300px"
-                  srcset="
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-300x300.jpg 300w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-100x100.jpg 100w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-600x600.jpg 600w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-150x150.jpg 150w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-768x768.jpg 768w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2.jpg         800w
-                  "
-                />
-              </picture>
-              <noscript>
-                <picture
-                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                  decoding="async"
-                >
-                  <source
-                    type="image/webp"
-                    srcset="
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-300x300.jpg.webp 300w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-100x100.jpg.webp 100w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-600x600.jpg.webp 600w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-150x150.jpg.webp 150w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-768x768.jpg.webp 768w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2.jpg.webp         800w
-                    "
-                    sizes="(max-width: 300px) 100vw, 300px"
-                  />
-                  <img
-                    width="300"
-                    height="300"
-                    src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-300x300.jpg"
-                    alt="Free Sonic video invitation"
-                    decoding="async"
-                    srcset="
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-300x300.jpg 300w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-100x100.jpg 100w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-600x600.jpg 600w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-150x150.jpg 150w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2-768x768.jpg 768w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/Video-invitacion-gratis-de-sonic-2.jpg         800w
-                    "
-                    sizes="(max-width: 300px) 100vw, 300px"
-                  />
-                </picture>
-              </noscript>
-              <span class="product-title">Sonic video invitation 01</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.videoinvitacioneseditables.com/en/product/baby-shark-video-invitation-01/"
-            >
-              <picture
-                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                decoding="async"
-              >
-                <source
-                  type="image/webp"
-                  data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-300x300.jpg.webp 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-150x150.jpg.webp 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-768x768.jpg.webp 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-600x600.jpg.webp 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-100x100.jpg.webp 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis.jpg.webp 800w"
-                  srcset="
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-300x300.jpg.webp 300w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-150x150.jpg.webp 150w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-768x768.jpg.webp 768w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-600x600.jpg.webp 600w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-100x100.jpg.webp 100w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis.jpg.webp         800w
-                  "
-                  data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                  sizes="(max-width: 300px) 100vw, 300px"
-                />
-                <img
-                  width="300"
-                  height="300"
-                  src="{% static 'images/polls/video-invitacion-de-baby-shark-gratis-300x300.jpg' %}"
-                  alt="Video invitación de Baby Shark gratis"
-                  decoding="async"
-                  data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-300x300.jpg 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-150x150.jpg 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-768x768.jpg 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-600x600.jpg 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-100x100.jpg 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis.jpg 800w"
-                  data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                  data-lazy-src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-300x300.jpg"
-                  data-ll-status="loaded"
-                  class="entered lazyloaded"
-                  sizes="(max-width: 300px) 100vw, 300px"
-                  srcset="
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-300x300.jpg 300w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-150x150.jpg 150w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-768x768.jpg 768w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-600x600.jpg 600w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-100x100.jpg 100w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis.jpg         800w
-                  "
-                />
-              </picture>
-              <noscript>
-                <picture
-                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                  decoding="async"
-                >
-                  <source
-                    type="image/webp"
-                    srcset="
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-300x300.jpg.webp 300w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-150x150.jpg.webp 150w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-768x768.jpg.webp 768w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-600x600.jpg.webp 600w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-100x100.jpg.webp 100w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis.jpg.webp         800w
-                    "
-                    sizes="(max-width: 300px) 100vw, 300px"
-                  />
-                  <img
-                    width="300"
-                    height="300"
-                    src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-300x300.jpg"
-                    alt="Video invitación de Baby Shark gratis"
-                    decoding="async"
-                    srcset="
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-300x300.jpg 300w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-150x150.jpg 150w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-768x768.jpg 768w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-600x600.jpg 600w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis-100x100.jpg 100w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2023/09/video-invitacion-de-baby-shark-gratis.jpg         800w
-                    "
-                    sizes="(max-width: 300px) 100vw, 300px"
-                  />
-                </picture>
-              </noscript>
-              <span class="product-title">Baby Shark video invitation 01</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.videoinvitacioneseditables.com/en/product/jurassic-world-dominion-video-invitation-01/"
-            >
-              <picture
-                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                decoding="async"
-              >
-                <source
-                  type="image/webp"
-                  data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-300x300.jpg.webp 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-100x100.jpg.webp 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-600x600.jpg.webp 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-150x150.jpg.webp 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-768x768.jpg.webp 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis.jpg.webp 800w"
-                  srcset="
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-300x300.jpg.webp 300w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-100x100.jpg.webp 100w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-600x600.jpg.webp 600w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-150x150.jpg.webp 150w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-768x768.jpg.webp 768w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis.jpg.webp         800w
-                  "
-                  data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                  sizes="(max-width: 300px) 100vw, 300px"
-                />
-                <img
-                  width="300"
-                  height="300"
-                  src="{% static 'images/polls/video-invitacion-de-jurassic-world-dominion-gratis-300x300.jpg' %}"
-                  alt="Free Jurassic World Dominion video invitation"
-                  decoding="async"
-                  data-lazy-srcset="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-300x300.jpg 300w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-100x100.jpg 100w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-600x600.jpg 600w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-150x150.jpg 150w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-768x768.jpg 768w, https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis.jpg 800w"
-                  data-lazy-sizes="(max-width: 300px) 100vw, 300px"
-                  data-lazy-src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-300x300.jpg"
-                  data-ll-status="loaded"
-                  class="entered lazyloaded"
-                  sizes="(max-width: 300px) 100vw, 300px"
-                  srcset="
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-300x300.jpg 300w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-100x100.jpg 100w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-600x600.jpg 600w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-150x150.jpg 150w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-768x768.jpg 768w,
-                    https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis.jpg         800w
-                  "
-                />
-              </picture>
-              <noscript>
-                <picture
-                  class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
-                  decoding="async"
-                >
-                  <source
-                    type="image/webp"
-                    srcset="
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-300x300.jpg.webp 300w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-100x100.jpg.webp 100w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-600x600.jpg.webp 600w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-150x150.jpg.webp 150w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-768x768.jpg.webp 768w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis.jpg.webp         800w
-                    "
-                    sizes="(max-width: 300px) 100vw, 300px"
-                  />
-                  <img
-                    width="300"
-                    height="300"
-                    src="https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-300x300.jpg"
-                    alt="Free Jurassic World Dominion video invitation"
-                    decoding="async"
-                    srcset="
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-300x300.jpg 300w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-100x100.jpg 100w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-600x600.jpg 600w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-150x150.jpg 150w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis-768x768.jpg 768w,
-                      https://www.videoinvitacioneseditables.com/wp-content/uploads/2022/11/video-invitacion-de-jurassic-world-dominion-gratis.jpg         800w
-                    "
-                    sizes="(max-width: 300px) 100vw, 300px"
-                  />
-                </picture>
-              </noscript>
-              <span class="product-title"
-                >Jurassic World Dominion video invitation 01</span
-              >
-            </a>
-          </li>
-        </ul>
-      </aside>
-      <aside
-        id="woocommerce_product_categories-3"
-        class="widget woocommerce widget_product_categories"
-      >
-        <h2 class="widget-title"><span>Product Categories</span></h2>
-        <ul class="product-categories">
-          <li class="cat-item cat-item-149">
-            <a
-              href="https://www.videoinvitacioneseditables.com/en/product-category/baby-shower-en/"
-              >Baby Shower</a
-            >
-            <span class="count">(1</span>
-          </li>
-          <li class="cat-item cat-item-51 cat-parent current-cat-parent">
-            <a
-              href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/"
-              >Birthday</a
-            >
-            <span class="count">(56</span>
-            <ul class="children">
-              <li class="cat-item cat-item-147">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/baby-shark-en/"
-                  >Baby Shark</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-100">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/barbie-en/"
-                  >Barbie</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-124">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/bichikids-en/"
-                  >Bichikids</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-132">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/blippi-en/"
-                  >Blippi</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-54">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/bluey-en/"
-                  >Bluey</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-58">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/cars-en/"
-                  >Cars</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-107">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/cocomelon-en/"
-                  >Cocomelon</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-122">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/dinosaurs/"
-                  >Dinosaurs</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-72">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/dragon-ball-en/"
-                  >Dragon Ball</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-98">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/dumbo-en/"
-                  >Dumbo</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-59">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/encanto-en/"
-                  >Encanto</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-152">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/hello-kitty-en/"
-                  >Hello Kitty</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-61">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/jurassic-world-en/"
-                  >Jurassic World</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-71">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/la-granja-de-zenon-en/"
-                  >La Granja de Zenon</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-96">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/luca-en/"
-                  >Luca</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-52">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/mario-bros-en/"
-                  >Mario Bros</a
-                >
-                <span class="count">(2</span>
-              </li>
-              <li class="cat-item cat-item-73">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/masha-and-the-bear/"
-                  >Masha and the Bear</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-69">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/mickey-mouse-en/"
-                  >Mickey Mouse</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-154">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/minecraft-en/"
-                  >Minecraft</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-70">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/minnie-mouse-en/"
-                  >Minnie Mouse</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-126">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/miraculous-en/"
-                  >Miraculous</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-55 current-cat">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/paw-patrol-en/"
-                  >Paw Patrol</a
-                >
-                <span class="count">(2</span>
-              </li>
-              <li class="cat-item cat-item-120">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/peppa-pig-en/"
-                  >Peppa Pig</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-130">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/pj-masks/"
-                  >PJ Masks</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-68">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/plim-plim-en/"
-                  >Plim Plim</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-134">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/pocoyo-en/"
-                  >Pocoyo</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-105">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/pokemon-en/"
-                  >Pokemon</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-109 cat-parent">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/princesses/"
-                  >Princesses</a
-                >
-                <span class="count">(8</span>
-                <ul class="children">
-                  <li class="cat-item cat-item-92">
-                    <a
-                      href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/princesses/frozen-en/"
-                      >Frozen</a
-                    >
-                    <span class="count">(1</span>
-                  </li>
-                  <li class="cat-item cat-item-94">
-                    <a
-                      href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/princesses/moana-en/"
-                      >Moana</a
-                    >
-                    <span class="count">(2</span>
-                  </li>
-                  <li class="cat-item cat-item-74">
-                    <a
-                      href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/princesses/rapunzel-en/"
-                      >Rapunzel</a
-                    >
-                    <span class="count">(1</span>
-                  </li>
-                  <li class="cat-item cat-item-116">
-                    <a
-                      href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/princesses/snow-white/"
-                      >Snow White</a
-                    >
-                    <span class="count">(1</span>
-                  </li>
-                  <li class="cat-item cat-item-128">
-                    <a
-                      href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/princesses/sofia-the-first/"
-                      >Sofia the First</a
-                    >
-                    <span class="count">(1</span>
-                  </li>
-                  <li class="cat-item cat-item-88">
-                    <a
-                      href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/princesses/the-little-mermaid/"
-                      >The Little Mermaid</a
-                    >
-                    <span class="count">(1</span>
-                  </li>
-                </ul>
-              </li>
-              <li class="cat-item cat-item-139">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/rainbow-friends-en/"
-                  >Rainbow Friends</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-65">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/roblox-en/"
-                  >Roblox</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-142">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/ruby-gillman-teenage-kraken/"
-                  >Ruby Gillman, Teenage Kraken</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-118">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/safari-en/"
-                  >Safari</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-114">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/soccer/"
-                  >Soccer</a
-                >
-                <span class="count">(2</span>
-              </li>
-              <li class="cat-item cat-item-56">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/sonic-en/"
-                  >Sonic</a
-                >
-                <span class="count">(3</span>
-              </li>
-              <li class="cat-item cat-item-60">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/spider-man-en/"
-                  >Spider Man</a
-                >
-                <span class="count">(2</span>
-              </li>
-              <li class="cat-item cat-item-64">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/spongebob/"
-                  >SpongeBob</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-145">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/teenage-mutant-ninja-turtles/"
-                  >Teenage Mutant Ninja Turtles</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-75 cat-parent">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/the-addams-family/"
-                  >The Addams Family</a
-                >
-                <span class="count">(1</span>
-                <ul class="children">
-                  <li class="cat-item cat-item-62">
-                    <a
-                      href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/the-addams-family/wednesday/"
-                      >Wednesday</a
-                    >
-                    <span class="count">(1</span>
-                  </li>
-                </ul>
-              </li>
-              <li class="cat-item cat-item-103">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/the-avengers/"
-                  >The Avengers</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-66 cat-parent">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/the-flintstones/"
-                  >The Flintstones</a
-                >
-                <span class="count">(1</span>
-                <ul class="children">
-                  <li class="cat-item cat-item-67">
-                    <a
-                      href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/the-flintstones/pebbles-en/"
-                      >Pebbles</a
-                    >
-                    <span class="count">(1</span>
-                  </li>
-                </ul>
-              </li>
-              <li class="cat-item cat-item-112">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/toy-story-en/"
-                  >Toy Story</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-137">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/transformers-en/"
-                  >Transformers</a
-                >
-                <span class="count">(1</span>
-              </li>
-              <li class="cat-item cat-item-90">
-                <a
-                  href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/unicorn/"
-                  >Unicorn</a
-                >
-                <span class="count">(1</span>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </aside>
-    </div>
-    <!-- #secondary -->
   </div>
   <!-- #content-inside -->
 </div>
 <!-- #content -->
 {% endblock %}
+
+{% block customjs %}
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  $(document).ready(function(){
+    console.log('qwtqwtqwt1222731281237')
+    var input = document.getElementById('id_image');
+    var image = document.getElementById('uploaded_image');
+  	$('#id_image').change(function(e) {
+      console.log('qwtqwtqwt')
+      console.log(input)
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+              image.src = e.target.result;
+          }
+          reader.readAsDataURL(input.files[0]);
+      }
+  	});
+  	$('input[type="radio"]').click(function(){
+      var inputValue = $(this).attr("value");
+  		if (inputValue == 0)
+  			{
+  				$('#title_foto_div').hide();
+  				$('#foto_div').hide();
+  			}else
+  				{
+  					$('#title_foto_div').show();
+  					$('#foto_div').show();
+  				}
+      });
+  	$('#forminvita').submit(function(){
+      $('#btnEnviar').attr('disabled', 'true');
+  		$("#overlay").fadeIn(300);
+  		});
+  	});
+  });
+</script>
+{% endblock customjs %}
+
