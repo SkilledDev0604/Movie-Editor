@@ -4,74 +4,32 @@ from datetime import datetime
 import math
 from PIL import Image, ImageDraw, ImageFont
 import numpy as np
+import gizeh as gz
 
-
-def get_textclip(text,
-    font="arialbd",
-    fontsize=70,
-    color="white",
-    stroke_color=None,
-    stroke_width=0,
-    radius=100,
-    height=1000,
-    width=1000):
-    def create_gizeh_surface():
-        surface = gz.Surface(
-            width=width,
-            height=height,
-            bg_color=(0, 0, 0, 0),
-        )
-        gz_text = gz.text(
-            text,
-            xy=(
-                width / 2,
-                height / 2,
-            ),
-            fill=color,
-            fontfamily=font,  # only family
-            fontsize=fontsize,
-            stroke=stroke_color,
-            stroke_width=stroke_width
-        )
-        # text = text.rotate(
-        #     -math.radians(TEXT_ROTATION),  # Gizeh accepts radians and inversed
-        #     center=(
-        #         (TEXT_POSITION[0] + SIZE[0]) / 2,
-        #         (TEXT_POSITION[1] + SIZE[1]) / 2,
-        #     ),
-        # )
-        gz_text.draw(surface)
-        return surface.get_npimage()
-
-    surface = create_gizeh_surface()
-
-    return ImageClip(surface)
-
-
-
-
-def get_curved_text_imageclip(
+def get_textclip(
     text,
-    font="arialbd",
+    font_path="arialbd.ttf",
     fontsize=70,
     color="white",
     stroke_color=None,
     stroke_width=0,
-    radius=100,
-    max_height=1000,
-    max_width=1000,
+    radius=0,
+    height=1000,
+    width=1000,
 ):
+    ratio = 2
     text_images = []
-    width = 0
-    font_path = f"{font}.ttf"
-    font = ImageFont.truetype(font_path, fontsize)
+    all_width = 0
+    font = ImageFont.truetype(font_path, fontsize * ratio)
+    stroke_width *= 2
 
     for character in text:
+        print(character)
         text_width, text_height = font.getsize(character)
-        width += text_width
+        all_width += text_width
         img = Image.new(
             "RGBA",
-            (text_width + stroke_width * 2, text_height + stroke_width * 2),
+            ((text_width + stroke_width * 2), (text_height + stroke_width * 2)),
             (0, 0, 0, 0),
         )
         draw = ImageDraw.Draw(img)
@@ -80,42 +38,54 @@ def get_curved_text_imageclip(
             character,
             font=font,
             fill=color,
-            stroke_width=stroke_width,
+            stroke_width=stroke_width * ratio,
             stroke_fill=stroke_color,
         )
         text_images.append(img)
     sum_width = 0
-    bg_image = Image.new("RGBA", (max_width, max_height), (0, 0, 0, 0))
+    bg_image = Image.new("RGBA", (width * ratio, height * ratio), (0, 0, 0, 0))
     all_images = [bg_image]
 
     for text_image in text_images:
-        length = width / 2 - sum_width - text_image.width / 2
+        length = all_width / 2 - sum_width - text_image.width / 2
         sum_width += text_image.width
+        if radius == 0:
+            image_width, image_height = text_image.size
+            position = (
+                int(width * ratio / 2 - length - image_width / 2),
+                int(height * ratio / 2 - image_height / 2),
+            )
+            bg_image.paste(text_image, position, text_image)
+            continue
         angle = length / radius
         delta_x = -radius * math.sin(angle)
         delta_y = radius - radius * math.cos(angle)
         rotated_image = text_image.rotate(math.degrees(angle), expand=True)
         image_width, image_height = rotated_image.size
         position = (
-            int(max_width / 2 + delta_x - image_width / 2),
-            int(max_height / 2 + delta_y - image_height / 2),
+            int(width * ratio / 2 + delta_x - image_width / 2),
+            int(height * ratio / 2 + delta_y - image_height / 2),
         )
         bg_image.paste(rotated_image, position, rotated_image)
-        all_images.append(bg_image)
-
-    return ImageClip(np.array(bg_image))
+        now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
+        bg_image.save(f"{settings.BASE_DIR}/static/{now}.png")
+    videodir = f"{settings.BASE_DIR}/static/videos/PawPatrolVideoInvitaion/"
+    videoclip = VideoClip(lambda t: np.array(bg_image), duration=20).set_fps(1).resize((width, height))
+    now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
+    videoclip.write_videofile(f"{videodir}output{now}.mp4")
+    return videoclip
 
 
 def get_curved_text_clip(
     text,
-    font="Arial-Bold",
+    font="arialbd.ttf",
     fontsize=70,
     color="white",
     stroke_color=None,
     stroke_width=0,
     radius=100,
-    max_height=1000,
-    max_width=1000,
+    height=1000,
+    width=1000,
     duration=20,
 ):
     text_clips = []
@@ -132,7 +102,7 @@ def get_curved_text_clip(
         text_clips.append(text_clip)
         width += text_clip.w
     sum_width = 0
-    bg_clip = ColorClip((round(max_width), round(max_height)), color=(0, 0, 0, 0), duration=duration)
+    bg_clip = ColorClip((round(width), round(height)), color=(0, 0, 0, 0), duration=duration)
     all_clips = [bg_clip]
     for text_clip in text_clips:
         length = width / 2 - sum_width - text_clip.w / 2
@@ -148,14 +118,13 @@ def get_curved_text_clip(
         )
         text_clip = text_clip.set_position(
             (
-                max_width / 2 + delta_x - clip_width / 2,
-                max_height / 2 + delta_y - clip_height / 2,
+                width / 2 + delta_x - clip_width / 2,
+                height / 2 + delta_y - clip_height / 2,
             )
         )
         text_clip = text_clip.rotate(math.degrees(angle), resample="bilinear")
         all_clips.append(text_clip)
-    # videodir = f"{settings.BASE_DIR}/static/videos/PawPatrolVideoInvitaion/"
-    # CompositeVideoClip(all_clips).write_videofile(f"{videodir}output0.mp4")
+    
     return CompositeVideoClip(all_clips)
 
 
@@ -284,8 +253,7 @@ def make_video_1(form, image=None):
     videodir = f"{settings.BASE_DIR}/static/videos/PawPatrolVideoInvitaion/"
     # Load the video file
     video_file = VideoFileClip(videodir + "basic.mp4")
-    ratio = 1.5
-    video_file = video_file.resize([video_file.w*ratio, video_file.h*ratio])
+    # video_file = video_file.resize([video_file.w*2, video_file.h*2])
     clips = [video_file]
 
     # Get the width and height of the video
@@ -294,11 +262,15 @@ def make_video_1(form, image=None):
     if image:
         image_clip = ImageClip(image)
         height_ratio = 0.3 * height / image_clip.h
-        width_ratio = width / image_clip.w
-        if height_ratio < width_ratio:
-            image_clip = image_clip.resize((image_clip.w * height_ratio, image_clip.h * height_ratio))
+        widht_ratio = width / image_clip.w
+        if height_ratio < widht_ratio:
+            image_clip = image_clip.resize(
+                (image_clip.w * height_ratio, image_clip.h * height_ratio)
+            )
         else:
-            image_clip = image_clip.resize((image_clip.w * width_ratio, image_clip.h * width_ratio))
+            image_clip = image_clip.resize(
+                (image_clip.w * widht_ratio, image_clip.h * widht_ratio)
+            )
         y = 0.2 * height
         delta_x = 20
         frames = (
@@ -320,15 +292,54 @@ def make_video_1(form, image=None):
         clips.append(image_clip)
 
     # Create the text clip with animation
-    text_clip = TextClip(
-        f"{form['linea1']}\n{form['linea2']}\n{form['linea3']}",
-        font="Arial-Bold",
-        fontsize=70 * ratio,
-        color="white",
-        stroke_color="Grey",
-        stroke_width=2
+    bg_clip = ColorClip(
+        (round(video_file.w), round(video_file.h * 0.8)),
+        color=(0, 0, 0, 0),
+        duration=12,
+    ).set_duration(20)
+    text_clip1 = get_textclip(
+        f"{form['linea1']}",
+        font_path="arialbd.ttf",
+        fontsize=70,
+        color="#FFFFFF",
+        stroke_color="#CCCCCC",
+        stroke_width=2,
+        width=width,
+        height=height
     )
-    clip_width, clip_height = text_clip.size
+    text_clip2 = get_textclip(
+        f"{form['linea2']}",
+        font_path="arialbd.ttf",
+        fontsize=70,
+        color="#FFFFFF",
+        stroke_color="#CCCCCC",
+        stroke_width=2,
+        width=width,
+        height=height
+    )
+    text_clip3 = get_textclip(
+        f"{form['linea3']}",
+        font_path="arialbd.ttf",
+        fontsize=70,
+        color="#FFFFFF",
+        stroke_color="#CCCCCC",
+        stroke_width=2,
+        width=width,
+        height=height
+    )
+    text_clip1 = text_clip1.set_position(
+        (
+            bg_clip.w / 2 - text_clip1.w / 2,
+            bg_clip.h / 2 - text_clip1.h / 2 -  0.1 * height,
+        )
+    )
+    text_clip2 = text_clip2.set_position(
+        (bg_clip.w / 2 - text_clip2.w / 2, bg_clip.h / 2 - text_clip2.h / 2)
+    )
+    text_clip3 = text_clip3.set_position(
+        (bg_clip.w / 2 - text_clip3.w / 2, bg_clip.h / 2  - text_clip3.h / 2 + 0.1 * height)
+    )
+    text_clip = CompositeVideoClip([bg_clip, text_clip1, text_clip2, text_clip3])
 
     frames = (
         {"time": 0, "position": (0.5 * width, 0.15 * height), "size": 0.1, "angle": 0},
@@ -352,15 +363,15 @@ def make_video_1(form, image=None):
     clips.append(text_clip)
 
     # BEN
-    text_clip = get_curved_text_clip(
+    text_clip = get_textclip(
         f"{form['linea4']}",
-        font="Arial-Bold",
-        fontsize=150*ratio,
+        font_path="arialbd.ttf",
+        fontsize=150,
         color="#251E87",
         stroke_color="white",
         stroke_width=8,
-        max_width=video_file.w * 2,
-        max_height=video_file.h * 2,
+        width=video_file.w * 2,
+        height=video_file.h * 2,
         radius=400,
     )
     clip_width, clip_height = text_clip.size
@@ -376,16 +387,15 @@ def make_video_1(form, image=None):
     clips.append(text_clip)
 
     # IS TUNING
-    text_clip = get_curved_text_clip(
+    text_clip = get_textclip(
         f"{form['linea5']}",
-        font="Arial-Bold",
-        fontsize=35*ratio,
+        font_path="arialbd.ttf",
+        fontsize=35,
         color="#251E87",
         radius=400,
-        max_height=video_file.h,
-        max_width=video_file.w,
+        height=video_file.h,
+        width=video_file.w,
     )
-    clip_width, clip_height = text_clip.size
     delta_x = -10
     y = 0.55 * height
     frames = (
@@ -400,15 +410,14 @@ def make_video_1(form, image=None):
     clips.append(text_clip)
 
     # 2
-    text_clip = TextClip(
+    text_clip = get_textclip(
         f"{form['linea6']}",
-        font="Arial-Bold",
-        fontsize=250*ratio,
+        font_path="arialbd.ttf",
+        fontsize=250,
         color="#0CC0DF",
         stroke_color="white",
         stroke_width=10,
     )
-    clip_width, clip_height = text_clip.size
     delta_x = -10
     y = 0.75 * height
     frames = (
@@ -426,19 +435,19 @@ def make_video_1(form, image=None):
         color=(0, 0, 0, 0),
         duration=12,
     )
-    text_clip1 = TextClip(
-        f"{form['linea7']}", font="Arial-Bold", fontsize=25, color="white"
+    text_clip1 = get_textclip(
+        f"{form['linea7']}", font_path="arialbd.ttf", fontsize=25, color="white"
     )
-    text_clip2 = TextClip(
+    text_clip2 = get_textclip(
         f"{form['linea8']}",
-        font="Arial-Bold",
-        fontsize=50*ratio,
+        font_path="arialbd.ttf",
+        fontsize=50,
         color="#0CC0DF00",
         stroke_color="white",
         stroke_width=3,
     )
-    text_clip3 = TextClip(
-        f"{form['linea9']}", font="Arial-Bold", fontsize=25, color="white"
+    text_clip3 = get_textclip(
+        f"{form['linea9']}", font_path="arialbd.ttf", fontsize=25, color="white"
     )
     text_clip1 = text_clip1.set_position(
         (
@@ -475,18 +484,18 @@ def make_video_1(form, image=None):
         color=(0, 0, 0, 0),
         duration=12,
     )
-    text_clip1 = TextClip(
+    text_clip1 = get_textclip(
         f"{form['linea10']}",
-        font="Arial-Bold",
-        fontsize=40*ratio,
+        font_path="arialbd.ttf",
+        fontsize=40,
         color="#251E87",
         stroke_color="white",
         stroke_width=2,
     )
-    text_clip2 = TextClip(
+    text_clip2 = get_textclip(
         f"{form['linea11']}",
-        font="Arial-Bold",
-        fontsize=40*ratio,
+        font_path="arialbd.ttf",
+        fontsize=40,
         color="#0CC0DF",
         stroke_color="white",
         stroke_width=2,
@@ -514,10 +523,10 @@ def make_video_1(form, image=None):
     text_clip = set_frames(text_clip, frames)
     clips.append(text_clip)
 
-    text_clip = TextClip(
+    text_clip = get_textclip(
         f"{form['linea12']}\n{form['linea13']}",
-        font="Arial-Bold",
-        fontsize=25*ratio,
+        font_path="arialbd.ttf",
+        fontsize=25,
         color="black",
     )
     y = 0.325 * height
@@ -540,6 +549,6 @@ def make_video_1(form, image=None):
 
     # Write the final video file
     now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
-    final_clip.write_videofile(f"{videodir}output_{now}.mp4")
+    final_clip.write_videofile(f"{videodir}output_{now}.mp4", bitrate='10000k')
 
     return f"videos/PawPatrolVideoInvitaion/output_{now}.mp4"

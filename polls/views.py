@@ -10,20 +10,18 @@ import os
 
 def product_view(request):
     if request.method == 'POST':
-        print(request.POST, request.FILES)
         form = ImageForm(request.POST, request.FILES)
         uploaded_image_dir = f"{settings.BASE_DIR}/static/images/uploaded/"
+        image_file = request.FILES.get('image')
         image = None
-        if form.is_valid():
-            print('qwetqwt', form)
-            image_file = form.cleaned_data['image']
+        if image_file:
             now = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
             image = f'{uploaded_image_dir}image_{now}.jpg'
             with open(image, 'wb+') as destination:
                 for chunk in image_file.chunks():
                     destination.write(chunk)
         preview_url = make_video_1(request.POST, image)
-        if os.path.exists(image):
+        if image and os.path.exists(image):
             os.remove(image)
         query_params = QueryDict(mutable=True)
         query_params['preview_url'] = preview_url

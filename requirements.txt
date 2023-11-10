@@ -5,3 +5,5 @@ Pillow==8.4.0
 sqlparse==0.4.2
 tzdata==2021.5
 moviepy==1.0.3
+cairocffi==1.6.1
+gizeh==0.1.11
