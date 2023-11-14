@@ -6,46 +6,46 @@ from PIL import Image, ImageDraw, ImageFont
 import numpy as np
 
 
-def get_textclip(text,
-    font="arialbd",
-    fontsize=70,
-    color="white",
-    stroke_color=None,
-    stroke_width=0,
-    radius=100,
-    height=1000,
-    width=1000):
-    def create_gizeh_surface():
-        surface = gz.Surface(
-            width=width,
-            height=height,
-            bg_color=(0, 0, 0, 0),
-        )
-        gz_text = gz.text(
-            text,
-            xy=(
-                width / 2,
-                height / 2,
-            ),
-            fill=color,
-            fontfamily=font,  # only family
-            fontsize=fontsize,
-            stroke=stroke_color,
-            stroke_width=stroke_width
-        )
-        # text = text.rotate(
-        #     -math.radians(TEXT_ROTATION),  # Gizeh accepts radians and inversed
-        #     center=(
-        #         (TEXT_POSITION[0] + SIZE[0]) / 2,
-        #         (TEXT_POSITION[1] + SIZE[1]) / 2,
-        #     ),
-        # )
-        gz_text.draw(surface)
-        return surface.get_npimage()
+# def get_textclip(text,
+#     font="arialbd",
+#     fontsize=70,
+#     color="white",
+#     stroke_color=None,
+#     stroke_width=0,
+#     radius=100,
+#     height=1000,
+#     width=1000):
+#     def create_gizeh_surface():
+#         surface = gz.Surface(
+#             width=width,
+#             height=height,
+#             bg_color=(0, 0, 0, 0),
+#         )
+#         gz_text = gz.text(
+#             text,
+#             xy=(
+#                 width / 2,
+#                 height / 2,
+#             ),
+#             fill=color,
+#             fontfamily=font,  # only family
+#             fontsize=fontsize,
+#             stroke=stroke_color,
+#             stroke_width=stroke_width
+#         )
+#         # text = text.rotate(
+#         #     -math.radians(TEXT_ROTATION),  # Gizeh accepts radians and inversed
+#         #     center=(
+#         #         (TEXT_POSITION[0] + SIZE[0]) / 2,
+#         #         (TEXT_POSITION[1] + SIZE[1]) / 2,
+#         #     ),
+#         # )
+#         gz_text.draw(surface)
+#         return surface.get_npimage()
 
-    surface = create_gizeh_surface()
+#     surface = create_gizeh_surface()
 
-    return ImageClip(surface)
+#     return ImageClip(surface)
 
 
 
