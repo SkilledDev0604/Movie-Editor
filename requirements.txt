@@ -7,3 +7,6 @@ tzdata==2021.5
 moviepy==1.0.3
 cairocffi==1.6.1
 gizeh==0.1.11
+ffmpeg-python==0.2.0
+opencv-python==4.8.1.78
+vidgear==0.3.2
