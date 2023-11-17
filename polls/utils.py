@@ -9,6 +9,9 @@ import subprocess
 import cv2
 import numpy as np
 from vidgear.gears import CamGear
+# import the necessary packages
+from deffcode import FFdecoder
+
 
 
 def get_position(t, frames, size):
@@ -106,6 +109,8 @@ def make_video_1(form, image_file=None):
 
     # Open video stream
     stream = CamGear(source=input_file).start()
+    # initialize and formulate the decoder for BGR24 output
+    decoder = FFdecoder(input_file, frame_format="bgr24").formulate()
 
     # Get length of video
     duration = VideoFileClip(input_file).duration
@@ -403,11 +408,9 @@ def make_video_1(form, image_file=None):
             d.text((bg.size[0]/2-size[0]/2, bg.size[1]/2-size[1]/2), text_object['text'], fill=text_object['color'], font=font, stroke_fill=text_object['stroke_color'], stroke_width=text_object['stroke_width'], align='center')
             text_object['image'] = bg
     count = 0
-    while True:
+    # grab the BGR24  frame from the decoder
+    for frame in decoder.generateFrame():
         
-        # Read frames from the video stream
-        frame = stream.read()
-
         # Break the loop if the video has ended
         if frame is None:
             break
