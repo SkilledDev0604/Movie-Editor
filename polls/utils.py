@@ -2,7 +2,7 @@ from moviepy.editor import *
 from django.conf import settings
 from datetime import datetime
 import math
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 import numpy as np
 import ffmpeg
 import subprocess
@@ -106,6 +106,25 @@ def get_function_from_frames(frames, delta_x=0, delta_y=0, delta_r=0):
     # y = delta_x * math.sin(α) + delta_y * math.cos(α)
     return (x_func, y_func, f_func, r_func)
 
+def get_angle(t, frames):
+    i = 0
+    while i < len(frames) and t > frames[i]["time"]:
+        i += 1
+    if i >= len(frames):
+        return frames[-1]["angle"]
+    if i == 0:
+        return frames[0]["angle"]
+    angle_from, angle_to, time_from, time_to = (
+        frames[i - 1]["angle"],
+        frames[i]["angle"],
+        frames[i - 1]["time"],
+        frames[i]["time"],
+    )
+    angle = angle_from + (angle_to - angle_from) * (t - time_from) / (
+        time_to - time_from
+    )
+    # print(size, scale)
+    return angle
 
 def get_curved_text_clip(
     text,
@@ -249,18 +268,30 @@ def make_video_1(form, image=None):
         draw = ImageDraw.Draw(pil_frame)
 
         for text_object in text_objects:
-
-
             # Specify the text content and position
             text = text_object['text']
             # Load the custom font
             font = ImageFont.truetype(text_object['font_file'], size=round(text_object['fontsize'] * get_scale(time, text_object['frames'])))
+            # Get size of text box 
             size = draw.textsize(text, font)
-            print((width, height), size)
+            size = (size[0], size[1]+len(text_object['text'].split('\n'))*10)
+            # Get angle of text
+            angle = get_angle(time, text_object['frames'])
+            # Get position of text box
             text_position = get_position(t=time, frames=text_object['frames'], size=size)
-            
             # Draw the text on the image
-            draw.text(text_position, text, fill=text_object['color'], font=font, stroke_fill=text_object['stroke_color'], stroke_width=text_object['stroke_width'], align='center')
+            txt=Image.new('L', size)
+            d = ImageDraw.Draw(txt)
+            d.text((0,0), text, fill=text_object['color'], font=font, stroke_fill=text_object['stroke_color'], stroke_width=text_object['stroke_width'], align='center',angle=angle)
+            txt=txt.rotate(angle,  expand=True, resample=Image.BICUBIC)
+
+
+            pil_frame.paste(txt, (round(text_position[0]), round(text_position[1])), txt)
+            # pil_frame.rotate(-angle, expand=True)
+            
+            # pil_frame.rotate(angle, expand=True)
+            
+            
 
         # Convert the modified PIL Image back to OpenCV format
         modified_frame = np.array(pil_frame)
@@ -280,7 +311,7 @@ def make_video_1(form, image=None):
     output_video.release()
     cv2.destroyAllWindows()
     stream.stop()
-    return output_file
+    return f"videos/PawPatrolVideoInvitaion/output_{now}.mp4"
     ffmpeg_input = ffmpeg.input(input_file)
     ffmpeg_output = ffmpeg_input
     
