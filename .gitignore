@@ -26,4 +26,5 @@ venv.bak/
 #video
 
 static/videos/
+static/images/uploaded
 *.mp3
