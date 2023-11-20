@@ -268,7 +268,7 @@ def get_objects(form, image_file):
                 "ratio": ratio,
                 "frames": (
                     {"time": 3,"x": x,"y": y,"size": 1,"angle": 0},
-                    {"time": 6.2,"x": x,"y": y,"size": 1,"angle": 0},
+                    {"time": 6.1,"x": x,"y": y,"size": 1,"angle": 0},
                 ),
                 "angle": 0,
             }

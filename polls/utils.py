@@ -117,7 +117,6 @@ def set_bound(img, bound):
         delete_regions.append((bound[2] * img.size[0], 0, img.size[0], img.size[1]))
     if bound[3] != 1:
         delete_regions.append((0, bound[3] * img.size[1], img.size[0], img.size[1]))
-    if len(delete_regions) > 0: print(delete_regions)
     for region in delete_regions:
         draw.rectangle(region, fill=(0, 0, 0, 0))
     return img
@@ -250,6 +249,7 @@ def make_video(index=0, form=None, image_file=None):
             )
             text_object["image"] = bg
     count = 0
+    printed_time = 0
     while True:
         # # Read frames from the video stream
         frame = stream.read()
@@ -258,7 +258,9 @@ def make_video(index=0, form=None, image_file=None):
         if frame is None:
             break
         time = count / stream.framerate
-        print(time)
+        if time - printed_time > 0.5: 
+            print(time)
+            printed_time = time
         count += 1
         # Create a blank canvas with the same size as the frame
         pil_frame = Image.fromarray(frame).convert("RGB")
