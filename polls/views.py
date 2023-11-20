@@ -33,7 +33,7 @@ def product_view(request, index):
         query_params['preview_url'] = preview_url
         redirect_url = '/video/preview/?{}'.format(query_params.urlencode())
         return redirect(redirect_url)
-    return render(request, f'polls/{index}.html', {"inputs": inputs[index], "title": titles[index]})
+    return render(request, f'polls/product.html', {"inputs": inputs[index], "title": titles[index]})
 
 def preview_view(request):
     preview_url = request.GET.get('preview_url')

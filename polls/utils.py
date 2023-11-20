@@ -10,7 +10,24 @@ import numpy as np
 from vidgear.gears import CamGear
 
 inputs = (
-    (),
+    (
+        {"id":"1"},
+        {"id":"1", "value": "JOIN US", "maxlength": 25, "required": True},
+        {"id":"2", "value": "TO", "maxlength": 25, "required": True},
+        {"id":"3", "value": "CELEBRATE!", "maxlength": 25, "required": True},
+        {"id":"2"},
+        {"id":"4", "value": "BEN", "maxlength": 25, "required": True},
+        {"id":"5", "value": "IS TURNING", "maxlength": 25, "required": True},
+        {"id":"6", "value": "2", "maxlength": 25, "required": True},
+        {"id":"3"},
+        {"id":"7", "value": "2:00-5:00PM", "maxlength": 25, "required": True},
+        {"id":"8", "value": "SUNDAY", "maxlength": 25, "required": True},
+        {"id":"9", "value": "DECEMBER", "maxlength": 25, "required": True},
+        {"id":"10", "value": "PSVP TO MOM", "maxlength": 25, "required": True},
+        {"id":"11", "value": "+657-278-990, FLORIDA", "maxlength": 25, "required": True},
+        {"id":"12", "value": "126, GREENVILE", "maxlength": 25, "required": True},
+        {"id":"13", "value": "STREET 1, CA", "maxlength": 25, "required": True},
+    ),
     (
         {"id":"1"},
         {"id":"1", "value": "JOIN US TO CELEBRATE", "maxlength": 25, "required": True},

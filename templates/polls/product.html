@@ -1008,7 +1008,7 @@ create video {% endblock %} {% block customcss %}
           class="post-363 product type-product status-publish has-post-thumbnail product_cat-birthday product_cat-paw-patrol-en first instock virtual product-type-simple"
         >
           <header class="entry-header entry-header-single">
-            <h1 class="entry-title">Paw Patrol video invitation 01</h1>
+            <h1 class="entry-title">{{title}} video invitation 01</h1>
             {% comment %} <div class="entry-meta entry-meta-1">
               <span class="author vcard"
                 ><a
@@ -1068,20 +1068,20 @@ create video {% endblock %} {% block customcss %}
                     <p class="price"></p>
                     <div class="woocommerce-product-details__short-description">
                       <p>
-                        Check out this amazing paw patrol video invitation for
+                        Check out this amazing {{title}} video invitation for
                         your next party!
                       </p>
                       <p>
-                        Paw Patrol is a very popular TV series that every kid
+                        {{title}} is a very popular TV series that every kid
                         loves.
                       </p>
                       <p>Are you ready for the party?</p>
                       <p>
                         Let Chase, Marshall, Rocky and everyone else take you on
-                        an adventure in this Paw Patrol video invitation.
+                        an adventure in this {{title}} video invitation.
                       </p>
                       <p>
-                        Create a free video invitation with the Paw Patrol
+                        Create a free video invitation with the {{title}}
                         characters in minutes.
                       </p>
                     </div>
@@ -1100,7 +1100,7 @@ create video {% endblock %} {% block customcss %}
                         <a
                           href="https://www.videoinvitacioneseditables.com/en/product-category/birthday/paw-patrol-en/"
                           rel="tag"
-                          >Paw Patrol</a
+                          >{{title}}</a
                         >
                       </span>
                     </div>
@@ -1142,7 +1142,24 @@ create video {% endblock %} {% block customcss %}
                       <div class="invitacontainer">
                         <form id="forminvita" method="post" name="forminvita" enctype="multipart/form-data"> 
                           {%csrf_token%}
-                          {% block custom_inputs %}{% endblock custom_inputs %}
+                          {% for input in inputs %}
+                            {% if input.value is not None %}
+                              <div class="row">
+                                <div class="col-100">
+                                  <input id="{{"linea"|add:input.id}}" name="{{"linea"|add:input.id}}" required="" type="text" placeholder="{{input.value}}" maxlength="{{input.maxlength}}" value="{{input.value}}" />
+                                </div>
+                              </div>
+                            {% else %}
+                              <div class="row">
+                                <div class="col-100">
+                                  <label for="Pantalla 2">{{"Screen"|add:input.id}}</label>
+                                </div>
+                              </div>
+                            {% endif %}
+                          {% endfor %}
+                          <div class="row">
+                            <div class="col-100 espaciador"></div>
+                          </div>
                           <div class="row">
                             <div class="col-100">
                               &nbsp;<input
