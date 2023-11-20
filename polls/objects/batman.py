@@ -58,10 +58,10 @@ def get_objects(form, image_file):
             "stroke_width": 0,
             "stroke_color": "white",
             "frames": (
-                {"time": start, "x": x, "y": y + 100, "size": 1, "angle": 0},
-                {"time": start+0.3, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": end-0.3, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": end, "x": x, "y": y - 100, "size": 1, "angle": 0},
+                {"time": start, "x": x, "y": y + 100, "size": 1, "angle": 0, 'bound':(0, 0, 1, 0.4)},
+                {"time": start+0.3, "x": x, "y": y, "size": 1, "angle": 0, 'bound':(0, 0, 1, 0.6)},
+                {"time": end-0.3, "x": x, "y": y, "size": 1, "angle": 0, 'bound':(0, 0.4, 1, 1)},
+                {"time": end, "x": x, "y": y - 100, "size": 1, "angle": 0, 'bound':(0, 0.6, 1, 1)},
             ),
             "radius": 0,
         }
@@ -94,8 +94,8 @@ def get_objects(form, image_file):
     )
 
     # 5
-    delta_x = 0
-    x = 0.5 * width
+    delta_x = 0.1 * width if image_file else 0
+    x = 0.5 * width + delta_x
     y = 0.48 * height
     start = 3.5
     end = 5.2
@@ -108,10 +108,10 @@ def get_objects(form, image_file):
             "stroke_width": 10,
             "stroke_color": "#00eeff",
             "frames": (
-                {"time": start, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": start + 0.5, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": end - 0.5, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": end, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": start, "x": x, "y": y, "size": 1, "angle": 0, 'bound':(0,0,0,1)},
+                {"time": start + 0.5, "x": x, "y": y, "size": 1, "angle": 0, 'bound':(0,0,1,1)},
+                {"time": end - 0.5, "x": x, "y": y, "size": 1, "angle": 0, 'bound':(0,0,1,1)},
+                {"time": end, "x": x, "y": y, "size": 1, "angle": 0, 'bound':(1,0,1,1)},
             ),
             "radius": 0,
         }

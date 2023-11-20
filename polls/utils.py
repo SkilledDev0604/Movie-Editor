@@ -106,6 +106,22 @@ def get_text_size(text, font_file, fontsize):
     return font.getsize(text)
 
 
+def set_bound(img, bound):
+    draw = ImageDraw.Draw(img)
+    delete_regions = []
+    if bound[0] != 0:
+        delete_regions.append((0, 0, bound[0] * img.size[0], img.size[1]))
+    if bound[1] != 0:
+        delete_regions.append((0, 0, img.size[0], bound[1] * img.size[1]))
+    if bound[2] != 1:
+        delete_regions.append((bound[2] * img.size[0], 0, img.size[0], img.size[1]))
+    if bound[3] != 1:
+        delete_regions.append((0, bound[3] * img.size[1], img.size[0], img.size[1]))
+    if len(delete_regions) > 0: print(delete_regions)
+    for region in delete_regions:
+        draw.rectangle(region, fill=(0, 0, 0, 0))
+    return img
+
 def get_angle(t, frames):
     i = 0
     while i < len(frames) and t > frames[i]["time"]:
@@ -124,6 +140,27 @@ def get_angle(t, frames):
         time_to - time_from
     )
     return angle
+
+def get_bound(t, frames):
+    i = 0
+    while i < len(frames) and t > frames[i]["time"]:
+        i += 1
+    if i >= len(frames):
+        return (0, 0, 1, 1)
+    if i == 0:
+        return (0, 0, 1, 1)
+    bound_from, bound_to, time_from, time_to = (
+        frames[i - 1].get('bound') if frames[i - 1].get('bound') else (0, 0, 1, 1),
+        frames[i].get('bound') if frames[i].get('bound') else (0, 0, 1, 1),
+        frames[i - 1]["time"],
+        frames[i]["time"],
+    )
+    bound = [0, 0, 1, 1]
+    for index, abound in enumerate(bound_from):
+        bound[index] = abound + (bound_to[index] - abound) * (t - time_from) / (
+            time_to - time_from
+        )
+    return bound
 
 
 def get_scale(t, frames):
@@ -161,10 +198,9 @@ def make_video(index=0, form=None, image_file=None):
 
     # Get length of video
     video_clip = VideoFileClip(input_file)
-    duration = video_clip.duration
 
     # Get audio
-    audio = video_clip.audio.write_audiofile(temp_audio)
+    video_clip.audio.write_audiofile(temp_audio)
 
     # Define output video writer
     output_path = output_file
@@ -266,7 +302,9 @@ def make_video(index=0, form=None, image_file=None):
                 ),
                 resample=Image.BICUBIC,
             )
+            bg = set_bound(bg, get_bound(time, text_object['frames']))
             bg = bg.rotate(angle, fillcolor="#00000000")
+
             pil_frame.paste(
                 bg,
                 (
