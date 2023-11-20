@@ -3,9 +3,8 @@ from django.conf import settings
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
 
-def get_objects(index, form, image_file):
-    videodirs = ('PawPatrolVideoInvitaion', 'Batman')
-    videodir = f"{settings.BASE_DIR}/static/videos/{videodirs[index]}/"
+def get_objects(form, image_file):
+    videodir = f"{settings.BASE_DIR}/static/videos/Batman/"
     input_file = videodir + "basic.mp4"
     now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
     output_file = f"{videodir}output_{now}.mp4"
@@ -21,207 +20,233 @@ def get_objects(index, form, image_file):
     width = output_width
     height = output_height
 
+    # join us to celebrate
     x = 0.5 * width
-    y = 0.15 * height
+    y = 0.11 * height
+    start = 0.4
+    end = 2.2
     text_objects.append(
         {
-            "text": f"{form['linea1']}\n{form['linea2']}\n{form['linea3']}",
-            "fontsize": 70,
+            "text": f"{form['linea1']}",
+            "fontsize": 18,
             "font_file": font_file,
             "color": "white",
-            "stroke_width": 5,
-            "stroke_color": "black",
+            "stroke_width": 0,
+            "stroke_color": "orange",
             "frames": (
-                {"time": 0, "x": x, "y": y, "size": 0.1, "angle": 0},
-                {"time": 0.1, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 0.2, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": 3.8, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": 3.9, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 4, "x": x, "y": y, "size": 0.1, "angle": 0},
+                {"time": start, "x": (1 - 0.2) * x, "y": y, "size": 1, "angle": 0},
+                {"time": start+0.3, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end-0.3, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end, "x": (1 + 0.2) * x, "y": y, "size": 1, "angle": 0},
             ),
             "radius": 0,
         }
     )
 
-    # BEN
-    delta_x = -10
-    y = 0.4 * height
+    # ky'zien
+    delta_x = -0.10
+    y = 0.16 * height
     x = width / 2 + delta_x
+    start = 3
+    end = 5
     text_objects.append(
         {
-            "text": f"{form['linea4']}",
-            "fontsize": 150,
+            "text": f"{form['linea2']}",
+            "fontsize": 50,
             "font_file": font_file,
-            "color": "#871E25",
-            "stroke_width": 8,
+            "color": "white",
+            "stroke_width": 0,
             "stroke_color": "white",
             "frames": (
-                {"time": 5, "x": x, "y": y + 200, "size": 1, "angle": 0},
-                {"time": 5.25, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": 10.75, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": 11, "x": x, "y": y - 200, "size": 1, "angle": 0},
+                {"time": start, "x": x, "y": y + 100, "size": 1, "angle": 0},
+                {"time": start+0.3, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end-0.3, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end, "x": x, "y": y - 100, "size": 1, "angle": 0},
             ),
-            "radius": 400,
+            "radius": 0,
         }
     )
 
     # IS TUNING
-    delta_x = -10
-    y = 0.55 * height
+    delta_x = 0
+    y = 0.33 * height
     x = 0.5 * width + delta_x
+    start = 3.2
+    end = 5.2
+    text_objects.append(
+        {
+            "text": f"{form['linea3']}",
+            "fontsize": 35,
+            "font_file": font_file,
+            "color": "white",
+            "stroke_width": 0,
+            "stroke_color": "white",
+            "frames": (
+                {"time": start, "x": x, "y": y, "size": 0.1, "angle": 0},
+                {"time": start+0.1, "x": x, "y": y, "size": 1.2, "angle": 0},
+                {"time": start+0.2, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end-0.2, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end-0.1, "x": x, "y": y, "size": 1.2, "angle": 0},
+                {"time": end, "x": x, "y": y, "size": 0.1, "angle": 0},
+            ),
+            "radius": 0,
+        }
+    )
+
+    # 5
+    delta_x = 0
+    x = 0.5 * width
+    y = 0.48 * height
+    start = 3.5
+    end = 5.2
+    text_objects.append(
+        {
+            "text": f"{form['linea4']}",
+            "fontsize": 180,
+            "font_file": font_file,
+            "color": "Black",
+            "stroke_width": 10,
+            "stroke_color": "#00eeff",
+            "frames": (
+                {"time": start, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": start + 0.5, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end - 0.5, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end, "x": x, "y": y, "size": 1, "angle": 0},
+            ),
+            "radius": 0,
+        }
+    )
+
+    # SATURDAY
+    y = 0.07 * height
+    start = 6.1
+    delta_time = 0.7
+    end = 12
     text_objects.append(
         {
             "text": f"{form['linea5']}",
-            "fontsize": 35,
+            "fontsize": 40,
             "font_file": font_file,
-            "color": "#871E25",
-            "stroke_width": 0,
-            "stroke_color": "white",
+            "color": "black",
+            "stroke_width": 1,
+            "stroke_color": "#00eeff",
             "frames": (
-                {"time": 5.5, "x": x, "y": y, "size": 0.1, "angle": 0},
-                {"time": 5.6, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 5.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": 10.8, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": 10.9, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 11, "x": x, "y": y, "size": 0.1, "angle": 0},
+                {"time": start, "x": x, "y": y, "size": 0.1, "angle": 0},
+                {"time": start+0.1, "x": x, "y": y, "size": 1.2, "angle": 0},
+                {"time": start+0.2, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end, "x": x, "y": y, "size": 1, "angle": 0},
             ),
-            "radius": 400,
+            "radius": 0,
         }
     )
 
-    # 2
-    delta_x = -10
-    y = 0.75 * height
+    # november 18
+    y = 0.12 * height
+    start += delta_time
+    end = 12
     text_objects.append(
         {
             "text": f"{form['linea6']}",
-            "fontsize": 250,
+            "fontsize": 20,
             "font_file": font_file,
-            "color": "#DFC00C",
-            "stroke_width": 10,
-            "stroke_color": "white",
+            "color": "black",
+            "stroke_width": 1,
+            "stroke_color": "#00eeff",
             "frames": (
-                {"time": 6, "x": width, "y": y, "size": 1, "angle": -30},
-                {"time": 6.2, "x": 0.5 * width, "y": y, "size": 1, "angle": 0},
-                {"time": 10.8, "x": 0.5 * width, "y": y, "size": 1, "angle": -110},
-                {"time": 11, "x": 0.5 * width, "y": height, "size": 1, "angle": -45},
+                {"time": start, "x": x, "y": y, "size": 0.1, "angle": 0},
+                {"time": start+0.1, "x": x, "y": y, "size": 1.2, "angle": 0},
+                {"time": start+0.2, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end, "x": x, "y": y, "size": 1, "angle": 0},
             ),
             "radius": 0,
         }
     )
 
-    # 2:00-5:00PM SUNDAY DECEMBER
-    y = 0.04 * height
+    # 's house'
+    y = 0.21 * height
+    start += delta_time
+    end = 12
     text_objects.append(
         {
             "text": f"{form['linea7']}",
-            "fontsize": 25,
-            "font_file": font_file,
-            "color": "white",
-            "stroke_width": 0,
-            "stroke_color": "white",
-            "frames": (
-                {"time": 11.5, "x": x, "y": y, "size": 0.1, "angle": 0},
-                {"time": 11.6, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 11.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
-            ),
-            "radius": 0,
-        }
-    )
-
-    y = 0.08 * height
-    text_objects.append(
-        {
-            "text": f"{form['linea8']}",
-            "fontsize": 50,
-            "font_file": font_file,
-            "color": "#b5b823",
-            "stroke_width": 5,
-            "stroke_color": "white",
-            "frames": (
-                {"time": 11.5, "x": x, "y": y, "size": 0.1, "angle": 0},
-                {"time": 11.6, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 11.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
-            ),
-            "radius": 0,
-        }
-    )
-
-    y = 0.13 * height
-    text_objects.append(
-        {
-            "text": f"{form['linea9']}",
-            "fontsize": 25,
-            "font_file": font_file,
-            "color": "white",
-            "stroke_width": 0,
-            "stroke_color": "white",
-            "frames": (
-                {"time": 11.5, "x": x, "y": y, "size": 0.1, "angle": 0},
-                {"time": 11.6, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 11.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
-            ),
-            "radius": 0,
-        }
-    )
-
-    # RSVP TO MOM +657
-    y = 0.2 * height
-    text_objects.append(
-        {
-            "text": f"{form['linea10']}",
-            "fontsize": 40,
-            "font_file": font_file,
-            "color": "#871E25",
-            "stroke_width": 2,
-            "stroke_color": "white",
-            "frames": (
-                {"time": 12, "x": x, "y": y, "size": 0.1, "angle": 0},
-                {"time": 12.1, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 12.2, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
-            ),
-            "radius": 0,
-        }
-    )
-
-    y = 0.25 * height
-    text_objects.append(
-        {
-            "text": f"{form['linea11']}",
-            "fontsize": 40,
-            "font_file": font_file,
-            "color": "#DFC00C",
-            "stroke_width": 2,
-            "stroke_color": "white",
-            "frames": (
-                {"time": 12, "x": x, "y": y, "size": 0.1, "angle": 0},
-                {"time": 12.1, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 12.2, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
-            ),
-            "radius": 0,
-        }
-    )
-
-    y = 0.36 * height
-    text_objects.append(
-        {
-            "text": f"{form['linea12']}\n{form['linea13']}",
-            "fontsize": 25,
+            "fontsize": 30,
             "font_file": font_file,
             "color": "black",
-            "stroke_width": 0,
-            "stroke_color": "white",
+            "stroke_width": 1,
+            "stroke_color": "#00eeff",
             "frames": (
-                {"time": 12.5, "x": x, "y": y, "size": 0.1, "angle": 0},
-                {"time": 12.6, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 12.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": duration, "x": x, "y": y, "size": 0.1, "angle": 0},
+                {"time": start, "x": x, "y": y, "size": 0.1, "angle": 0},
+                {"time": start+0.1, "x": x, "y": y, "size": 1.2, "angle": 0},
+                {"time": start+0.2, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end, "x": x, "y": y, "size": 1, "angle": 0},
+            ),
+            "radius": 0,
+        }
+    )
+
+    # 3152 ~ florida
+    y = 0.28 * height
+    start += delta_time
+    end = 12
+    text_objects.append(
+        {
+            "text": f"{form['linea8']}\n{form['linea9']}",
+            "fontsize": 15,
+            "font_file": font_file,
+            "color": "black",
+            "stroke_width": 1,
+            "stroke_color": "#00eeff",
+            "frames": (
+                {"time": start, "x": x, "y": y, "size": 0.1, "angle": 0},
+                {"time": start+0.1, "x": x, "y": y, "size": 1.2, "angle": 0},
+                {"time": start+0.2, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end, "x": x, "y": y, "size": 1, "angle": 0},
+            ),
+            "radius": 0,
+        }
+    )
+
+    # rsvp to mom
+    y = 0.38 * height
+    start += delta_time * 2
+    end = 12
+    text_objects.append(
+        {
+            "text": f"{form['linea10']}\n{form['linea11']}",
+            "fontsize": 30,
+            "font_file": font_file,
+            "color": "black",
+            "stroke_width": 1,
+            "stroke_color": "#00eeff",
+            "frames": (
+                {"time": start, "x": x, "y": y, "size": 0.1, "angle": 0},
+                {"time": start+0.1, "x": x, "y": y, "size": 1.2, "angle": 0},
+                {"time": start+0.2, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end, "x": x, "y": y, "size": 1, "angle": 0},
+            ),
+            "radius": 0,
+        }
+    )
+
+     # see you there
+    y = 0.75 * height
+    start = 13.2
+    end = duration
+    text_objects.append(
+        {
+            "text": f"{form['linea12']}",
+            "fontsize": 40,
+            "font_file": font_file,
+            "color": "black",
+            "stroke_width": 1,
+            "stroke_color": "#00eeff",
+            "frames": (
+                {"time": start, "x": x, "y": y, "size": 0.1, "angle": 0},
+                {"time": start+0.1, "x": x, "y": y, "size": 1.2, "angle": 0},
+                {"time": start+0.2, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end-0.2, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": end-0.1, "x": x, "y": y, "size": 1.2, "angle": 0},
+                {"time": end, "x": x, "y": y, "size": 0.1, "angle": 0},
             ),
             "radius": 0,
         }

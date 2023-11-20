@@ -11,8 +11,8 @@ from vidgear.gears import CamGear
 from .objects import (pawpatrol, batman)
 
 def get_objects(index, form, image_file):
-    if index == 1: return batman.get_objects(index=index, form=form, image_file=image_file)
-    else: return pawpatrol.get_objects(index=index, form=form, image_file=image_file)
+    if index == 1: return batman.get_objects(form=form, image_file=image_file)
+    else: return pawpatrol.get_objects(form=form, image_file=image_file)
 
 inputs = (
     (
@@ -48,6 +48,8 @@ inputs = (
         {"id":"9", "value": "JACKSONVILLE, FLORIDA", "maxlength": 25, "required": True},
         {"id":"10", "value": "RSVP TO MOM", "maxlength": 25, "required": True},
         {"id":"11", "value": "+657-278-990", "maxlength": 25, "required": True},
+        {"id":"4"},
+        {"id":"12", "value": "SEE YOU THERE", "maxlength": 25, "required": True},
     ),
 )
 
@@ -149,9 +151,11 @@ def make_video(index=0, form=None, image_file=None):
         index, form=form, image_file=image_file
     )
 
+    video_dirs = ('PawPatrolVideoInvitaion', 'Batman')
+
     temp_audio = f"temp/temp_{now}.mp3"
     temp_file = f"temp/temp_{now}.mp4"
-    return_file = f"videos/PawPatrolVideoInvitaion/output_{now}.mp4"
+    return_file = f"videos/{video_dirs[index]}/output_{now}.mp4"
 
     stream = CamGear(source=input_file).start()
 

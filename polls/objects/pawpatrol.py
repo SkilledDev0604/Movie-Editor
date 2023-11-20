@@ -3,9 +3,8 @@ from django.conf import settings
 from datetime import datetime
 from PIL import Image, ImageDraw, ImageFont
 
-def get_objects(index, form, image_file):
-    videodirs = ('PawPatrolVideoInvitaion', 'Batman')
-    videodir = f"{settings.BASE_DIR}/static/videos/{videodirs[index]}/"
+def get_objects(form, image_file):
+    videodir = f"{settings.BASE_DIR}/static/videos/PawPatrolVideoInvitaion/"
     input_file = videodir + "basic.mp4"
     now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
     output_file = f"{videodir}output_{now}.mp4"
