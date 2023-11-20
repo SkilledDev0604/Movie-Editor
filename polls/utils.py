@@ -55,7 +55,7 @@ inputs = (
 
 titles = ('Paw Patrol', "Batman")
 
-samples = ('videos/PawPatrolVideoInvitaion/sample.mp4', 'videos/batman/sample.mp4')
+samples = ('videos/PawPatrolVideoInvitaion/sample.mp4', 'videos/Batman/sample.mp4')
 
 
 def get_position(t, frames, size):
