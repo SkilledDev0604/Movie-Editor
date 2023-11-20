@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+{% extends "polls/product.html" %}
+
+{% block custom_inputs %}
+  {% for input in inputs %}
+    {% if input.value is not None %}
+      <div class="row">
+        <div class="col-100">
+          <input id="{{"linea"|add:input.id}}" name="{{"linea"|add:input.id}}" required="" type="text" placeholder="{{input.value}}" maxlength="{{input.maxlength}}" value="{{input.value}}" />
+        </div>
+      </div>
+    {% else %}
+      <div class="row">
+        <div class="col-100">
+          <label for="Pantalla 2">{{"Screen"|add:input.id}}</label>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+  <div class="row">
+    <div class="col-100 espaciador"></div>
+  </div>
+{% endblock %}

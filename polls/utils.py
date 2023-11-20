@@ -8,7 +8,28 @@ import subprocess
 import cv2
 import numpy as np
 from vidgear.gears import CamGear
-from deffcode import FFdecoder
+
+inputs = (
+    (),
+    (
+        {"id":"1"},
+        {"id":"1", "value": "JOIN US TO CELEBRATE", "maxlength": 25, "required": True},
+        {"id":"2"},
+        {"id":"2", "value": "KY'ZIEN", "maxlength": 25, "required": True},
+        {"id":"3", "value": "IS TURNING", "maxlength": 25, "required": True},
+        {"id":"4", "value": "5", "maxlength": 25, "required": True},
+        {"id":"3"},
+        {"id":"5", "value": "SATURDAY", "maxlength": 25, "required": True},
+        {"id":"6", "value": "NOVEMBER 18", "maxlength": 25, "required": True},
+        {"id":"7", "value": "KY'ZIEN'S HOUSE", "maxlength": 25, "required": True},
+        {"id":"8", "value": "3152 CERRY TREE DRIVE,", "maxlength": 25, "required": True},
+        {"id":"9", "value": "JACKSONVILLE, FLORIDA", "maxlength": 25, "required": True},
+        {"id":"10", "value": "RSVP TO MOM", "maxlength": 25, "required": True},
+        {"id":"11", "value": "+657-278-990", "maxlength": 25, "required": True},
+    ),
+)
+
+titles = ('Paw Patrol', "Batman")
 
 
 def get_position(t, frames, size):
@@ -44,14 +65,15 @@ def get_position(t, frames, size):
     # width = abs(size[0] * math.cos(angle)) + abs(size[1] * math.sin(angle))
     # height = abs(size[0] * math.sin(angle)) + abs(size[1] * math.cos(angle))
     text_position = (
-            position_from[0] + (position_to[0] - position_from[0]) * time - width * 0.5,
-            position_from[1] + (position_to[1] - position_from[1]) * time - height * 0.5
-        )
+        position_from[0] + (position_to[0] - position_from[0]) * time - width * 0.5,
+        position_from[1] + (position_to[1] - position_from[1]) * time - height * 0.5,
+    )
     text_center = (
-            position_from[0] + (position_to[0] - position_from[0]) * time,
-            position_from[1] + (position_to[1] - position_from[1]) * time
-        )
+        position_from[0] + (position_to[0] - position_from[0]) * time,
+        position_from[1] + (position_to[1] - position_from[1]) * time,
+    )
     return (text_position, text_center)
+
 
 def get_text_size(text, font_file, fontsize):
     font = ImageFont.truetype(font_file, fontsize)
@@ -95,9 +117,8 @@ def get_scale(t, frames):
     scale = size_from + (size_to - size_from) * (t - time_from) / (time_to - time_from)
     return scale
 
-def get_objects(index, form, image_file):
 
-    
+def get_objects(index, form, image_file):
     videodir = f"{settings.BASE_DIR}/static/videos/PawPatrolVideoInvitaion/"
     input_file = videodir + "basic.mp4"
     now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
@@ -113,7 +134,7 @@ def get_objects(index, form, image_file):
     text_objects = []
     width = output_width
     height = output_height
-    
+
     x = 0.5 * width
     y = 0.15 * height
     text_objects.append(
@@ -161,7 +182,7 @@ def get_objects(index, form, image_file):
     # IS TUNING
     delta_x = -10
     y = 0.55 * height
-    x= 0.5 * width + delta_x
+    x = 0.5 * width + delta_x
     text_objects.append(
         {
             "text": f"{form['linea5']}",
@@ -228,7 +249,7 @@ def get_objects(index, form, image_file):
             "radius": 0,
         }
     )
-    
+
     y = 0.08 * height
     text_objects.append(
         {
@@ -253,7 +274,7 @@ def get_objects(index, form, image_file):
             "radius": 0,
         }
     )
-    
+
     y = 0.13 * height
     text_objects.append(
         {
@@ -304,7 +325,7 @@ def get_objects(index, form, image_file):
             "radius": 0,
         }
     )
-    
+
     y = 0.25 * height
     text_objects.append(
         {
@@ -343,13 +364,25 @@ def get_objects(index, form, image_file):
                 {"time": 12.5, "x": x, "y": y, "size": 0.1, "angle": 0},
                 {"time": 12.6, "x": x, "y": y, "size": 1.2, "angle": 0},
                 {"time": 12.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0, },
-                {"time": duration, "x": x, "y": y, "size": 0.1, "angle": 0, },
+                {
+                    "time": duration - 0.1,
+                    "x": x,
+                    "y": y,
+                    "size": 1,
+                    "angle": 0,
+                },
+                {
+                    "time": duration,
+                    "x": x,
+                    "y": y,
+                    "size": 0.1,
+                    "angle": 0,
+                },
             ),
             "radius": 0,
         }
     )
-    
+
     image_objects = []
     image = None
     if image_file:
@@ -359,39 +392,64 @@ def get_objects(index, form, image_file):
         ratio = height_ratio if height_ratio < widht_ratio else widht_ratio
         y = 0.2 * height
         delta_x = 20
-        image_objects.append({
-            "ratio": ratio,
-            "frames" : (
-                {"time": 4, "x": 0.5 * width - delta_x, "y": y, "size": 1, "angle": 0},
-                {"time": 4.5, "x": 0.5 * width - delta_x, "y": y, "size": 1, "angle": 0},
-                {"time": 10, "x": 0.5 * width + delta_x, "y": y, "size": 1, "angle": 0},
-            ),
-            "angle": 0
-        })
+        image_objects.append(
+            {
+                "ratio": ratio,
+                "frames": (
+                    {
+                        "time": 4,
+                        "x": 0.5 * width - delta_x,
+                        "y": y,
+                        "size": 1,
+                        "angle": 0,
+                    },
+                    {
+                        "time": 4.5,
+                        "x": 0.5 * width - delta_x,
+                        "y": y,
+                        "size": 1,
+                        "angle": 0,
+                    },
+                    {
+                        "time": 10,
+                        "x": 0.5 * width + delta_x,
+                        "y": y,
+                        "size": 1,
+                        "angle": 0,
+                    },
+                ),
+                "angle": 0,
+            }
+        )
         x = 0.75 * width
         y = 0.5 * height
-        image_objects.append({
-            "ratio": ratio,
-            "frames" : (
-                {"time": 11.5, "x": x, "y": y, "size": 0.5, "angle": 0},
-                {"time": 11.6, "x": x, "y": y, "size": 1.2, "angle": 0},
-                {"time": 11.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {"time": duration, "x": x, "y": y, "size": 1, "angle": 0},
-            ),
-            "angle": 0
-        })
+        image_objects.append(
+            {
+                "ratio": ratio,
+                "frames": (
+                    {"time": 11.5, "x": x, "y": y, "size": 0.5, "angle": 0},
+                    {"time": 11.6, "x": x, "y": y, "size": 1.2, "angle": 0},
+                    {"time": 11.7, "x": x, "y": y, "size": 1, "angle": 0},
+                    {"time": duration, "x": x, "y": y, "size": 1, "angle": 0},
+                ),
+                "angle": 0,
+            }
+        )
 
     return (input_file, output_file, now, text_objects, image_objects)
 
 
-def make_video(index = 0, form = None, image_file=None):
-    if form is None: return
-    input_file, output_file, now, text_objects, image_objects = get_objects(index, form = form, image_file = image_file)
-    
-    temp_audio = f'temp/temp_{now}.mp3'
-    temp_file = f'temp/temp_{now}.mp4'
+def make_video(index=0, form=None, image_file=None):
+    if form is None:
+        return
+    input_file, output_file, now, text_objects, image_objects = get_objects(
+        index, form=form, image_file=image_file
+    )
+
+    temp_audio = f"temp/temp_{now}.mp3"
+    temp_file = f"temp/temp_{now}.mp4"
     return_file = f"videos/PawPatrolVideoInvitaion/output_{now}.mp4"
-    
+
     stream = CamGear(source=input_file).start()
 
     # Get length of video
@@ -405,9 +463,11 @@ def make_video(index = 0, form = None, image_file=None):
     output_path = output_file
     output_fps = stream.framerate
     output_height, output_width = stream.frame.shape[:2]
-    fourcc = cv2.VideoWriter.fourcc(*'mp4v')
-    temp_file = 'temp/temp.mp4'
-    output_video = cv2.VideoWriter(temp_file, fourcc, output_fps, (output_width, output_height))
+    fourcc = cv2.VideoWriter.fourcc(*"mp4v")
+    temp_file = "temp/temp.mp4"
+    output_video = cv2.VideoWriter(
+        temp_file, fourcc, output_fps, (output_width, output_height)
+    )
     width = output_width
     height = output_height
 
@@ -417,22 +477,39 @@ def make_video(index = 0, form = None, image_file=None):
         image = Image.open(image_file)
 
     for text_object in text_objects:
-        font = ImageFont.truetype(text_object['font_file'], size=round(text_object['fontsize']))
-        if text_object['radius'] != 0:
-            text_object['image'] = get_curved_text(text= text_object['text'], font=font, color=text_object['color'], stroke_color=text_object['stroke_color'], stroke_width=text_object['stroke_width'], height=height, width=width, radius=text_object['radius'])
+        font = ImageFont.truetype(
+            text_object["font_file"], size=round(text_object["fontsize"])
+        )
+        if text_object["radius"] != 0:
+            text_object["image"] = get_curved_text(
+                text=text_object["text"],
+                font=font,
+                color=text_object["color"],
+                stroke_color=text_object["stroke_color"],
+                stroke_width=text_object["stroke_width"],
+                height=height,
+                width=width,
+                radius=text_object["radius"],
+            )
         else:
             bg = Image.new("RGBA", (width, height), (255, 255, 255, 0))
             d = ImageDraw.Draw(bg)
-            # Get size of text box 
-            size = d.textsize(text_object['text'], font)
-            d.text((bg.size[0]/2-size[0]/2, bg.size[1]/2-size[1]/2), text_object['text'], fill=text_object['color'], font=font, stroke_fill=text_object['stroke_color'], stroke_width=text_object['stroke_width'], align='center')
-            text_object['image'] = bg
+            # Get size of text box
+            size = d.textsize(text_object["text"], font)
+            d.text(
+                (bg.size[0] / 2 - size[0] / 2, bg.size[1] / 2 - size[1] / 2),
+                text_object["text"],
+                fill=text_object["color"],
+                font=font,
+                stroke_fill=text_object["stroke_color"],
+                stroke_width=text_object["stroke_width"],
+                align="center",
+            )
+            text_object["image"] = bg
     count = 0
     while True:
-        
         # # Read frames from the video stream
         frame = stream.read()
-       
 
         # Break the loop if the video has ended
         if frame is None:
@@ -441,12 +518,27 @@ def make_video(index = 0, form = None, image_file=None):
         print(time)
         count += 1
         # Create a blank canvas with the same size as the frame
-        pil_frame = Image.fromarray(frame).convert('RGB')
+        pil_frame = Image.fromarray(frame).convert("RGB")
 
         for image_object in image_objects:
-            resized_image = image.resize((round(image.size[0] * image_object['ratio'] * get_scale(time, image_object['frames'])), round(image.size[1] * image_object['ratio'] * get_scale(time, image_object['frames']))))
-            rotated_image = resized_image.rotate(get_angle(time, image_object['frames']))
-            pos, _ = get_position(time, image_object['frames'], rotated_image.size)
+            resized_image = image.resize(
+                (
+                    round(
+                        image.size[0]
+                        * image_object["ratio"]
+                        * get_scale(time, image_object["frames"])
+                    ),
+                    round(
+                        image.size[1]
+                        * image_object["ratio"]
+                        * get_scale(time, image_object["frames"])
+                    ),
+                )
+            )
+            rotated_image = resized_image.rotate(
+                get_angle(time, image_object["frames"])
+            )
+            pos, _ = get_position(time, image_object["frames"], rotated_image.size)
             b, g, r = rotated_image.split()
             converted_image = Image.merge("RGB", (r, g, b))
             pil_frame.paste(converted_image, (round(pos[0]), round(pos[1])))
@@ -456,29 +548,42 @@ def make_video(index = 0, form = None, image_file=None):
 
         for text_object in text_objects:
             # Specify the text content and position
-            text = text_object['text']
-            # Get size of text box 
+            text = text_object["text"]
+            # Get size of text box
             size = draw.textsize(text, font)
-            size = (size[0], size[1]+len(text_object['text'].split('\n'))*10)
+            size = (size[0], size[1] + len(text_object["text"].split("\n")) * 10)
             # Get angle of text
-            angle = get_angle(time, text_object['frames'])
+            angle = get_angle(time, text_object["frames"])
             # Get position of text box
-            (text_position, text_center) = get_position(t=time, frames=text_object['frames'], size=size)
+            (text_position, text_center) = get_position(
+                t=time, frames=text_object["frames"], size=size
+            )
             # Draw the text on the image
-            scale = get_scale(time, text_object['frames'])
-            bg = text_object['image'].resize((round(text_object['image'].size[0] * scale), round(text_object['image'].size[1] * scale)), resample = Image.BICUBIC)
+            scale = get_scale(time, text_object["frames"])
+            bg = text_object["image"].resize(
+                (
+                    round(text_object["image"].size[0] * scale),
+                    round(text_object["image"].size[1] * scale),
+                ),
+                resample=Image.BICUBIC,
+            )
             bg = bg.rotate(angle, fillcolor="#00000000")
-            pil_frame.paste(bg, (round(text_center[0]-bg.size[0]/2), round(text_center[1]-bg.size[1]/2)), bg)
+            pil_frame.paste(
+                bg,
+                (
+                    round(text_center[0] - bg.size[0] / 2),
+                    round(text_center[1] - bg.size[1] / 2),
+                ),
+                bg,
+            )
 
-
-                
         # Convert the modified PIL Image back to OpenCV format
         modified_frame = np.array(pil_frame)
 
         output_video.write(modified_frame)
-     
+
         # Break the loop if the 'q' key is pressed
-        if cv2.waitKey(1) & 0xFF == ord('q'):
+        if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
     # Release resources
@@ -486,20 +591,25 @@ def make_video(index = 0, form = None, image_file=None):
     cv2.destroyAllWindows()
     stream.stop()
     # convert video from mp4v to h264
-    subprocess.call(f'ffmpeg -i {temp_file} -i {temp_audio} -c:v libx264 -crf 20 -c:s copy -c:a aac -map 0:v:0 -map 1:a:0 {output_file}'.split(' '))
+    subprocess.call(
+        f"ffmpeg -i {temp_file} -i {temp_audio} -c:v libx264 -crf 20 -c:s copy -c:a aac -map 0:v:0 -map 1:a:0 {output_file}".split(
+            " "
+        )
+    )
     # Get the path to the folder you want to delete all files from
-    
 
     # Iterate over all the files in the folder
-    for file_path in os.listdir('temp'):
+    for file_path in os.listdir("temp"):
         # Delete the file
-        os.remove(os.path.join('temp', file_path))
+        os.remove(os.path.join("temp", file_path))
     # subprocess.call(['ffmpeg','-y', '-i', temp_file, '-c:v', 'libx264', '-crf', '20', '-c:s', 'copy', '-c:a', 'copy', output_file])
     # decoder.terminate()
     return return_file
 
 
-def get_curved_text(text, font, color, stroke_color, stroke_width, width, height, radius):
+def get_curved_text(
+    text, font, color, stroke_color, stroke_width, width, height, radius
+):
     bg = Image.new("RGBA", (width, height), (255, 255, 255, 0))
     d = ImageDraw.Draw(bg)
     all_width = 0
@@ -515,7 +625,24 @@ def get_curved_text(text, font, color, stroke_color, stroke_width, width, height
         delta_y = radius - radius * math.cos(angle)
         ch_image = Image.new("RGBA", (width * 2, height * 2), (255, 255, 255, 0))
         ch_d = ImageDraw.Draw(ch_image)
-        ch_d.text((ch_image.size[0]/2-size[0]/2, ch_image.size[1]/2-size[1]/2), character, fill=color, font=font, stroke_fill=stroke_color, stroke_width=stroke_width, align='center')
-        ch_image = ch_image.rotate(math.degrees(angle), fillcolor="#00000000", resample=Image.BICUBIC)
-        bg.paste(ch_image, (round(bg.size[0]/2 + delta_x - ch_image.size[0]/2), round(bg.size[1]/2 + delta_y - ch_image.size[1]/2)), ch_image)
+        ch_d.text(
+            (ch_image.size[0] / 2 - size[0] / 2, ch_image.size[1] / 2 - size[1] / 2),
+            character,
+            fill=color,
+            font=font,
+            stroke_fill=stroke_color,
+            stroke_width=stroke_width,
+            align="center",
+        )
+        ch_image = ch_image.rotate(
+            math.degrees(angle), fillcolor="#00000000", resample=Image.BICUBIC
+        )
+        bg.paste(
+            ch_image,
+            (
+                round(bg.size[0] / 2 + delta_x - ch_image.size[0] / 2),
+                round(bg.size[1] / 2 + delta_y - ch_image.size[1] / 2),
+            ),
+            ch_image,
+        )
     return bg

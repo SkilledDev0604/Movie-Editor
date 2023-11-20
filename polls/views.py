@@ -1,14 +1,13 @@
 from django.shortcuts import render
-from .utils import (make_video)
+from .utils import (make_video, inputs, titles)
 from django.shortcuts import redirect
 from django.http import QueryDict
 from django.templatetags.static import static
-from .forms import ImageForm
 from django.conf import settings
 import datetime
 import os
 
-video_count = 1
+video_count = 2
 
 def for_redirect(request):
     return redirect('/video/product/0')
@@ -34,7 +33,7 @@ def product_view(request, index):
         query_params['preview_url'] = preview_url
         redirect_url = '/video/preview/?{}'.format(query_params.urlencode())
         return redirect(redirect_url)
-    return render(request, f'polls/{index}.html', {"form": ImageForm})
+    return render(request, f'polls/{index}.html', {"inputs": inputs[index], "title": titles[index]})
 
 def preview_view(request):
     preview_url = request.GET.get('preview_url')
