@@ -77,6 +77,7 @@ def get_angle(t, frames):
     )
     return angle
 
+
 def get_scale(t, frames):
     i = 0
     while i < len(frames) and t > frames[i]["time"]:
@@ -94,37 +95,20 @@ def get_scale(t, frames):
     scale = size_from + (size_to - size_from) * (t - time_from) / (time_to - time_from)
     return scale
 
+def get_objects(index, form, image_file):
 
-def make_video_1(form, image_file=None):
+    
     videodir = f"{settings.BASE_DIR}/static/videos/PawPatrolVideoInvitaion/"
     input_file = videodir + "basic.mp4"
     now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
     output_file = f"{videodir}output_{now}.mp4"
-    
+
     font_file = f"{settings.BASE_DIR}/static/fonts/Aachen BT Bold font.ttf"
-    
-    # Open video stream
-    print(input_file)
-    stream = CamGear(source=input_file).start()
 
     # Get length of video
     video_clip = VideoFileClip(input_file)
     duration = video_clip.duration
-
-    # Get audio
-    temp_audio = 'temp/temp.mp3'
-    audio = video_clip.audio.write_audiofile(temp_audio)
-
-    # Define the text properties
-    text = "Hello, World!"
-
-    # Define output video writer
-    output_path = output_file
-    output_fps = stream.framerate
-    output_height, output_width = stream.frame.shape[:2]
-    fourcc = cv2.VideoWriter.fourcc(*'mp4v')
-    temp_file = 'temp/temp.mp4'
-    output_video = cv2.VideoWriter(temp_file, fourcc, output_fps, (output_width, output_height))
+    output_width, output_height = video_clip.size
 
     text_objects = []
     width = output_width
@@ -397,6 +381,41 @@ def make_video_1(form, image_file=None):
             "angle": 0
         })
 
+    return (input_file, output_file, now, text_objects, image_objects)
+
+
+def make_video(index = 0, form = None, image_file=None):
+    if form is None: return
+    input_file, output_file, now, text_objects, image_objects = get_objects(index, form = form, image_file = image_file)
+    
+    temp_audio = f'temp/temp_{now}.mp3'
+    temp_file = f'temp/temp_{now}.mp4'
+    return_file = f"videos/PawPatrolVideoInvitaion/output_{now}.mp4"
+    
+    stream = CamGear(source=input_file).start()
+
+    # Get length of video
+    video_clip = VideoFileClip(input_file)
+    duration = video_clip.duration
+
+    # Get audio
+    audio = video_clip.audio.write_audiofile(temp_audio)
+
+    # Define output video writer
+    output_path = output_file
+    output_fps = stream.framerate
+    output_height, output_width = stream.frame.shape[:2]
+    fourcc = cv2.VideoWriter.fourcc(*'mp4v')
+    temp_file = 'temp/temp.mp4'
+    output_video = cv2.VideoWriter(temp_file, fourcc, output_fps, (output_width, output_height))
+    width = output_width
+    height = output_height
+
+    image = None
+
+    if len(image_objects) > 0:
+        image = Image.open(image_file)
+
     for text_object in text_objects:
         font = ImageFont.truetype(text_object['font_file'], size=round(text_object['fontsize']))
         if text_object['radius'] != 0:
@@ -477,7 +496,7 @@ def make_video_1(form, image_file=None):
         os.remove(os.path.join('temp', file_path))
     # subprocess.call(['ffmpeg','-y', '-i', temp_file, '-c:v', 'libx264', '-crf', '20', '-c:s', 'copy', '-c:a', 'copy', output_file])
     # decoder.terminate()
-    return f"videos/PawPatrolVideoInvitaion/output_{now}.mp4"
+    return return_file
 
 
 def get_curved_text(text, font, color, stroke_color, stroke_width, width, height, radius):

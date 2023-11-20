@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .utils import (make_video_1)
+from .utils import (make_video)
 from django.shortcuts import redirect
 from django.http import QueryDict
 from django.templatetags.static import static
@@ -9,7 +9,6 @@ import datetime
 import os
 
 video_count = 1
-functions = (make_video_1,)
 
 def for_redirect(request):
     return redirect('/video/product/0')
@@ -28,7 +27,7 @@ def product_view(request, index):
             with open(image, 'wb+') as destination:
                 for chunk in image_file.chunks():
                     destination.write(chunk)
-        preview_url = functions[index](request.POST, image)
+        preview_url = make_video(index, request.POST, image)
         if image and os.path.exists(image):
             os.remove(image)
         query_params = QueryDict(mutable=True)
