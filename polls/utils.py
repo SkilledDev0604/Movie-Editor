@@ -48,6 +48,8 @@ inputs = (
 
 titles = ('Paw Patrol', "Batman")
 
+samples = ('videos/PawPatrolVideoInvitaion/sample.mp4', 'videos/batman/sample.mp4')
+
 
 def get_position(t, frames, size):
     i = 0
@@ -136,7 +138,8 @@ def get_scale(t, frames):
 
 
 def get_objects(index, form, image_file):
-    videodir = f"{settings.BASE_DIR}/static/videos/PawPatrolVideoInvitaion/"
+    videodirs = ('PawPatrolVideoInvitaion', 'Batman')
+    videodir = f"{settings.BASE_DIR}/static/videos/{videodirs[index]}/"
     input_file = videodir + "basic.mp4"
     now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
     output_file = f"{videodir}output_{now}.mp4"
@@ -255,13 +258,7 @@ def get_objects(index, form, image_file):
                 {"time": 11.5, "x": x, "y": y, "size": 0.1, "angle": 0},
                 {"time": 11.6, "x": x, "y": y, "size": 1.2, "angle": 0},
                 {"time": 11.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {
-                    "time": duration - 0.1,
-                    "x": x,
-                    "y": y,
-                    "size": 1,
-                    "angle": 0,
-                },
+                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
             ),
             "radius": 0,
         }
@@ -280,13 +277,7 @@ def get_objects(index, form, image_file):
                 {"time": 11.5, "x": x, "y": y, "size": 0.1, "angle": 0},
                 {"time": 11.6, "x": x, "y": y, "size": 1.2, "angle": 0},
                 {"time": 11.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {
-                    "time": duration - 0.1,
-                    "x": x,
-                    "y": y,
-                    "size": 1,
-                    "angle": 0,
-                },
+                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
             ),
             "radius": 0,
         }
@@ -305,13 +296,7 @@ def get_objects(index, form, image_file):
                 {"time": 11.5, "x": x, "y": y, "size": 0.1, "angle": 0},
                 {"time": 11.6, "x": x, "y": y, "size": 1.2, "angle": 0},
                 {"time": 11.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {
-                    "time": duration - 0.1,
-                    "x": x,
-                    "y": y,
-                    "size": 1,
-                    "angle": 0,
-                },
+                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
             ),
             "radius": 0,
         }
@@ -331,13 +316,7 @@ def get_objects(index, form, image_file):
                 {"time": 12, "x": x, "y": y, "size": 0.1, "angle": 0},
                 {"time": 12.1, "x": x, "y": y, "size": 1.2, "angle": 0},
                 {"time": 12.2, "x": x, "y": y, "size": 1, "angle": 0},
-                {
-                    "time": duration - 0.1,
-                    "x": x,
-                    "y": y,
-                    "size": 1,
-                    "angle": 0,
-                },
+                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
             ),
             "radius": 0,
         }
@@ -356,13 +335,7 @@ def get_objects(index, form, image_file):
                 {"time": 12, "x": x, "y": y, "size": 0.1, "angle": 0},
                 {"time": 12.1, "x": x, "y": y, "size": 1.2, "angle": 0},
                 {"time": 12.2, "x": x, "y": y, "size": 1, "angle": 0},
-                {
-                    "time": duration - 0.1,
-                    "x": x,
-                    "y": y,
-                    "size": 1,
-                    "angle": 0,
-                },
+                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
             ),
             "radius": 0,
         }
@@ -381,20 +354,8 @@ def get_objects(index, form, image_file):
                 {"time": 12.5, "x": x, "y": y, "size": 0.1, "angle": 0},
                 {"time": 12.6, "x": x, "y": y, "size": 1.2, "angle": 0},
                 {"time": 12.7, "x": x, "y": y, "size": 1, "angle": 0},
-                {
-                    "time": duration - 0.1,
-                    "x": x,
-                    "y": y,
-                    "size": 1,
-                    "angle": 0,
-                },
-                {
-                    "time": duration,
-                    "x": x,
-                    "y": y,
-                    "size": 0.1,
-                    "angle": 0,
-                },
+                {"time": duration - 0.1, "x": x, "y": y, "size": 1, "angle": 0},
+                {"time": duration, "x": x, "y": y, "size": 0.1, "angle": 0},
             ),
             "radius": 0,
         }
@@ -413,27 +374,9 @@ def get_objects(index, form, image_file):
             {
                 "ratio": ratio,
                 "frames": (
-                    {
-                        "time": 4,
-                        "x": 0.5 * width - delta_x,
-                        "y": y,
-                        "size": 1,
-                        "angle": 0,
-                    },
-                    {
-                        "time": 4.5,
-                        "x": 0.5 * width - delta_x,
-                        "y": y,
-                        "size": 1,
-                        "angle": 0,
-                    },
-                    {
-                        "time": 10,
-                        "x": 0.5 * width + delta_x,
-                        "y": y,
-                        "size": 1,
-                        "angle": 0,
-                    },
+                    {"time": 4,"x": 0.5 * width - delta_x,"y": y,"size": 1,"angle": 0},
+                    {"time": 4.5,"x": 0.5 * width - delta_x,"y": y,"size": 1,"angle": 0},
+                    {"time": 10,"x": 0.5 * width + delta_x,"y": y,"size": 1,"angle": 0},
                 ),
                 "angle": 0,
             }
@@ -540,16 +483,8 @@ def make_video(index=0, form=None, image_file=None):
         for image_object in image_objects:
             resized_image = image.resize(
                 (
-                    round(
-                        image.size[0]
-                        * image_object["ratio"]
-                        * get_scale(time, image_object["frames"])
-                    ),
-                    round(
-                        image.size[1]
-                        * image_object["ratio"]
-                        * get_scale(time, image_object["frames"])
-                    ),
+                    round(image.size[0]* image_object["ratio"]* get_scale(time, image_object["frames"])),
+                    round(image.size[1]* image_object["ratio"]* get_scale(time, image_object["frames"])),
                 )
             )
             rotated_image = resized_image.rotate(

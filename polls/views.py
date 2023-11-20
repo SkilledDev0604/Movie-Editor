@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .utils import (make_video, inputs, titles)
+from .utils import (make_video, inputs, titles, samples)
 from django.shortcuts import redirect
 from django.http import QueryDict
 from django.templatetags.static import static
@@ -33,7 +33,8 @@ def product_view(request, index):
         query_params['preview_url'] = preview_url
         redirect_url = '/video/preview/?{}'.format(query_params.urlencode())
         return redirect(redirect_url)
-    return render(request, f'polls/product.html', {"inputs": inputs[index], "title": titles[index]})
+    
+    return render(request, f'polls/product.html', {"inputs": inputs[index], "title": titles[index], "sample_video": samples[index]})
 
 def preview_view(request):
     preview_url = request.GET.get('preview_url')
