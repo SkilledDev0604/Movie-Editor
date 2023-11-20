@@ -96,6 +96,7 @@ def get_objects(form, image_file):
     # 5
     delta_x = 0.1 * width if image_file else 0
     x = 0.5 * width + delta_x
+    delta_x = 0
     y = 0.48 * height
     start = 3.5
     end = 5.2
@@ -118,6 +119,7 @@ def get_objects(form, image_file):
     )
 
     # SATURDAY
+    x = 0.5 * width
     y = 0.07 * height
     start = 6.1
     delta_time = 0.7
@@ -256,32 +258,17 @@ def get_objects(form, image_file):
     image = None
     if image_file:
         image = Image.open(image_file)
-        height_ratio = 0.3 * height / image.size[1]
+        height_ratio = 0.15 * height / image.size[1]
         widht_ratio = width / image.size[0]
         ratio = height_ratio if height_ratio < widht_ratio else widht_ratio
-        y = 0.2 * height
-        delta_x = 20
+        y = 0.65 * height - image.size[1] * ratio
+        x = 0.2 * width
         image_objects.append(
             {
                 "ratio": ratio,
                 "frames": (
-                    {"time": 4,"x": 0.5 * width - delta_x,"y": y,"size": 1,"angle": 0},
-                    {"time": 4.5,"x": 0.5 * width - delta_x,"y": y,"size": 1,"angle": 0},
-                    {"time": 10,"x": 0.5 * width + delta_x,"y": y,"size": 1,"angle": 0},
-                ),
-                "angle": 0,
-            }
-        )
-        x = 0.75 * width
-        y = 0.5 * height
-        image_objects.append(
-            {
-                "ratio": ratio,
-                "frames": (
-                    {"time": 11.5, "x": x, "y": y, "size": 0.5, "angle": 0},
-                    {"time": 11.6, "x": x, "y": y, "size": 1.2, "angle": 0},
-                    {"time": 11.7, "x": x, "y": y, "size": 1, "angle": 0},
-                    {"time": duration, "x": x, "y": y, "size": 1, "angle": 0},
+                    {"time": 3,"x": x,"y": y,"size": 1,"angle": 0},
+                    {"time": 6.2,"x": x,"y": y,"size": 1,"angle": 0},
                 ),
                 "angle": 0,
             }

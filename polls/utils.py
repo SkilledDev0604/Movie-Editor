@@ -274,6 +274,7 @@ def make_video(index=0, form=None, image_file=None):
                 get_angle(time, image_object["frames"])
             )
             pos, _ = get_position(time, image_object["frames"], rotated_image.size)
+            rotated_image = rotated_image.convert("RGB")
             b, g, r = rotated_image.split()
             converted_image = Image.merge("RGB", (r, g, b))
             pil_frame.paste(converted_image, (round(pos[0]), round(pos[1])))
