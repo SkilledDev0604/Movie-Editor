@@ -9,7 +9,7 @@ def get_objects(form, image_file):
     now = datetime.now().strftime("%Y_%m_%d_%H_%M_%S_%f")
     output_file = f"{videodir}output_{now}.mp4"
 
-    font_file = f"{settings.BASE_DIR}/static/fonts/Aachen BT Bold font.ttf"
+    font_file = f"{settings.BASE_DIR}/static/fonts/batmfa__.ttf"
 
     # Get length of video
     video_clip = VideoFileClip(input_file)
@@ -24,7 +24,7 @@ def get_objects(form, image_file):
     x = 0.5 * width
     y = 0.11 * height
     start = 0.4
-    end = 2.2
+    end = 2.3
     text_objects.append(
         {
             "text": f"{form['linea1']}",
@@ -94,7 +94,7 @@ def get_objects(form, image_file):
     )
 
     # 5
-    delta_x = 0.1 * width if image_file else 0
+    delta_x = 0.18 * width if image_file else 0
     x = 0.5 * width + delta_x
     delta_x = 0
     y = 0.48 * height
@@ -106,7 +106,7 @@ def get_objects(form, image_file):
             "fontsize": 180,
             "font_file": font_file,
             "color": "Black",
-            "stroke_width": 10,
+            "stroke_width": 7,
             "stroke_color": "#00eeff",
             "frames": (
                 {"time": start, "x": x, "y": y, "size": 1, "angle": 0, 'bound':(0,0,0,1)},
@@ -120,17 +120,17 @@ def get_objects(form, image_file):
 
     # SATURDAY
     x = 0.5 * width
-    y = 0.07 * height
+    y = 0.08 * height
     start = 6.1
     delta_time = 0.7
     end = 12
     text_objects.append(
         {
             "text": f"{form['linea5']}",
-            "fontsize": 40,
+            "fontsize": 50,
             "font_file": font_file,
             "color": "black",
-            "stroke_width": 1,
+            "stroke_width": 2,
             "stroke_color": "#00eeff",
             "frames": (
                 {"time": start, "x": x, "y": y, "size": 0.1, "angle": 0},
@@ -149,7 +149,7 @@ def get_objects(form, image_file):
     text_objects.append(
         {
             "text": f"{form['linea6']}",
-            "fontsize": 20,
+            "fontsize": 25,
             "font_file": font_file,
             "color": "black",
             "stroke_width": 1,
@@ -187,13 +187,13 @@ def get_objects(form, image_file):
     )
 
     # 3152 ~ florida
-    y = 0.28 * height
+    y = 0.27 * height
     start += delta_time
     end = 12
     text_objects.append(
         {
             "text": f"{form['linea8']}\n{form['linea9']}",
-            "fontsize": 15,
+            "fontsize": 17,
             "font_file": font_file,
             "color": "black",
             "stroke_width": 1,
@@ -232,15 +232,16 @@ def get_objects(form, image_file):
 
      # see you there
     y = 0.75 * height
+    x += 0.02 * width
     start = 13.2
     end = duration
     text_objects.append(
         {
             "text": f"{form['linea12']}",
-            "fontsize": 40,
+            "fontsize": 35,
             "font_file": font_file,
             "color": "black",
-            "stroke_width": 1,
+            "stroke_width": 2,
             "stroke_color": "#00eeff",
             "frames": (
                 {"time": start, "x": x, "y": y, "size": 0.1, "angle": 0},
