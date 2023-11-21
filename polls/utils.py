@@ -337,9 +337,9 @@ def make_video(index=0, form=None, image_file=None):
     # Get the path to the folder you want to delete all files from
 
     # Iterate over all the files in the folder
-    for file_path in os.listdir("temp"):
-        # Delete the file
-        os.remove(os.path.join("temp", file_path))
+    os.remove(temp_file)
+    os.remove(temp_audio)
+    if image_file: os.remove(image_file)
     # subprocess.call(['ffmpeg','-y', '-i', temp_file, '-c:v', 'libx264', '-crf', '20', '-c:s', 'copy', '-c:a', 'copy', output_file])
     # decoder.terminate()
     return return_file
@@ -361,7 +361,7 @@ def get_curved_text(
         angle = length / radius
         delta_x = -radius * math.sin(angle)
         delta_y = radius - radius * math.cos(angle)
-        ch_image = Image.new("RGBA", (width * 2, height * 2), (255, 255, 255, 0))
+        ch_image = Image.new("RGBA", (height * 2, height * 2), (255, 255, 255, 0))
         ch_d = ImageDraw.Draw(ch_image)
         ch_d.text(
             (ch_image.size[0] / 2 - size[0] / 2, ch_image.size[1] / 2 - size[1] / 2),

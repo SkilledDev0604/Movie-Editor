@@ -45,12 +45,13 @@ def get_objects(form, image_file):
 
     # BEN
     delta_x = -10
-    y = 0.4 * height
+    delta_y = (1 - 3/len(form['linea4'])) * height * 0.1
+    y = 0.4 * height + delta_y
     x = width / 2 + delta_x
     text_objects.append(
         {
             "text": f"{form['linea4']}",
-            "fontsize": 150,
+            "fontsize": 150 / len(form['linea4']) * 3,
             "font_file": font_file,
             "color": "#871E25",
             "stroke_width": 8,
