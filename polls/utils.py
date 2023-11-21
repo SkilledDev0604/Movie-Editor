@@ -202,11 +202,9 @@ def make_video(index=0, form=None, image_file=None):
     video_clip.audio.write_audiofile(temp_audio)
 
     # Define output video writer
-    output_path = output_file
     output_fps = stream.framerate
     output_height, output_width = stream.frame.shape[:2]
     fourcc = cv2.VideoWriter.fourcc(*"mp4v")
-    temp_file = "temp/temp.mp4"
     output_video = cv2.VideoWriter(
         temp_file, fourcc, output_fps, (output_width, output_height)
     )
