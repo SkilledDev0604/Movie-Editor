@@ -28,3 +28,4 @@ venv.bak/
 static/videos/
 static/images/uploaded
 *.mp3
+temp/

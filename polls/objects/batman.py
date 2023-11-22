@@ -45,7 +45,7 @@ def get_objects(form, image_file):
 
     # ky'zien
     delta_x = -0.10
-    y = 0.16 * height
+    y = 0.17 * height
     x = width / 2 + delta_x
     start = 3
     end = 5
@@ -94,7 +94,7 @@ def get_objects(form, image_file):
     )
 
     # 5
-    delta_x = 0.18 * width if image_file else 0
+    delta_x = 0.18 * width if image_file else 0.05 * width
     x = 0.5 * width + delta_x
     delta_x = 0
     y = 0.48 * height
@@ -165,6 +165,7 @@ def get_objects(form, image_file):
     )
 
     # 's house'
+    delta_y = 0 if len(form['linea7'].lstrip().rstrip()) > 0 else - 0.06 * height
     y = 0.21 * height
     start += delta_time
     end = 12
@@ -187,7 +188,7 @@ def get_objects(form, image_file):
     )
 
     # 3152 ~ florida
-    y = 0.27 * height
+    y = 0.27 * height + delta_y
     start += delta_time
     end = 12
     text_objects.append(
@@ -209,7 +210,7 @@ def get_objects(form, image_file):
     )
 
     # rsvp to mom
-    y = 0.38 * height
+    y = 0.38 * height + delta_y
     start += delta_time * 2
     end = 12
     text_objects.append(
@@ -259,6 +260,8 @@ def get_objects(form, image_file):
     image = None
     if image_file:
         image = Image.open(image_file)
+        # Trim the transparent parts
+        image = image.crop(image.getbbox())
         height_ratio = 0.15 * height / image.size[1]
         widht_ratio = width / image.size[0]
         ratio = height_ratio if height_ratio < widht_ratio else widht_ratio

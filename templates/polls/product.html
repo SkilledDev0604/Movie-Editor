@@ -1146,7 +1146,7 @@ create video {% endblock %} {% block customcss %}
                             {% if input.value is not None %}
                               <div class="row">
                                 <div class="col-100">
-                                  <input id="{{"linea"|add:input.id}}" name="{{"linea"|add:input.id}}" required="" type="text" placeholder="{{input.value}}" maxlength="{{input.maxlength}}" value="{{input.value}}" />
+                                  <input id="{{"linea"|add:input.id}}" name="{{"linea"|add:input.id}}" "{{input.required}}" type="text" placeholder="{{input.value}}" maxlength="{{input.maxlength}}" value="{{input.value}}" />
                                 </div>
                               </div>
                             {% else %}

@@ -232,6 +232,8 @@ def get_objects(form, image_file):
     image = None
     if image_file:
         image = Image.open(image_file)
+        # Trim the transparent parts
+        image = image.crop(image.getbbox())
         height_ratio = 0.3 * height / image.size[1]
         widht_ratio = width / image.size[0]
         ratio = height_ratio if height_ratio < widht_ratio else widht_ratio

@@ -2,7 +2,7 @@ from moviepy.editor import *
 from django.conf import settings
 from datetime import datetime
 import math
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageOps
 import numpy as np
 import subprocess
 import cv2
@@ -17,39 +17,39 @@ def get_objects(index, form, image_file):
 inputs = (
     (
         {"id":"1"},
-        {"id":"1", "value": "JOIN US", "maxlength": 25, "required": True},
-        {"id":"2", "value": "TO", "maxlength": 25, "required": True},
-        {"id":"3", "value": "CELEBRATE!", "maxlength": 25, "required": True},
+        {"id":"1", "value": "JOIN US", "maxlength": 25, "required": "required"},
+        {"id":"2", "value": "TO", "maxlength": 25, "required": "required"},
+        {"id":"3", "value": "CELEBRATE!", "maxlength": 25, "required": "required"},
         {"id":"2"},
-        {"id":"4", "value": "BEN", "maxlength": 25, "required": True},
-        {"id":"5", "value": "IS TURNING", "maxlength": 25, "required": True},
-        {"id":"6", "value": "2", "maxlength": 25, "required": True},
+        {"id":"4", "value": "BEN", "maxlength": 25, "required": "required"},
+        {"id":"5", "value": "IS TURNING", "maxlength": 25, "required": "required"},
+        {"id":"6", "value": "2", "maxlength": 25, "required": "required"},
         {"id":"3"},
-        {"id":"7", "value": "2:00-5:00PM", "maxlength": 25, "required": True},
-        {"id":"8", "value": "SUNDAY", "maxlength": 25, "required": True},
-        {"id":"9", "value": "DECEMBER", "maxlength": 25, "required": True},
-        {"id":"10", "value": "PSVP TO MOM", "maxlength": 25, "required": True},
-        {"id":"11", "value": "+657-278-990", "maxlength": 25, "required": True},
-        {"id":"12", "value": "126, GREENVILE", "maxlength": 25, "required": True},
-        {"id":"13", "value": "STREET 1, CA", "maxlength": 25, "required": True},
+        {"id":"7", "value": "2:00-5:00PM", "maxlength": 25, "required": "required"},
+        {"id":"8", "value": "SUNDAY", "maxlength": 25, "required": "required"},
+        {"id":"9", "value": "DECEMBER", "maxlength": 25, "required": "required"},
+        {"id":"10", "value": "PSVP TO MOM", "maxlength": 25, "required": "required"},
+        {"id":"11", "value": "+657-278-990", "maxlength": 25, "required": "required"},
+        {"id":"12", "value": "126, GREENVILE", "maxlength": 25, "required": "required"},
+        {"id":"13", "value": "STREET 1, CA", "maxlength": 25, "required": "required"},
     ),
     (
         {"id":"1"},
-        {"id":"1", "value": "JOIN US TO CELEBRATE", "maxlength": 25, "required": True},
+        {"id":"1", "value": "JOIN US TO CELEBRATE", "maxlength": 25, "required": "required"},
         {"id":"2"},
-        {"id":"2", "value": "KY'ZIEN", "maxlength": 25, "required": True},
-        {"id":"3", "value": "IS TURNING", "maxlength": 25, "required": True},
-        {"id":"4", "value": "5", "maxlength": 25, "required": True},
+        {"id":"2", "value": "KY'ZIEN", "maxlength": 25, "required": "required"},
+        {"id":"3", "value": "IS TURNING", "maxlength": 25, "required": "required"},
+        {"id":"4", "value": "5", "maxlength": 25, "required": "required"},
         {"id":"3"},
-        {"id":"5", "value": "SATURDAY", "maxlength": 25, "required": True},
-        {"id":"6", "value": "NOVEMBER 18", "maxlength": 25, "required": True},
-        {"id":"7", "value": "KY'ZIEN'S HOUSE", "maxlength": 25, "required": True},
-        {"id":"8", "value": "3152 CERRY TREE DRIVE,", "maxlength": 25, "required": True},
-        {"id":"9", "value": "JACKSONVILLE, FLORIDA", "maxlength": 25, "required": True},
-        {"id":"10", "value": "RSVP TO MOM", "maxlength": 25, "required": True},
-        {"id":"11", "value": "+657-278-990", "maxlength": 25, "required": True},
+        {"id":"5", "value": "SATURDAY", "maxlength": 25, "required": "required"},
+        {"id":"6", "value": "NOVEMBER 18", "maxlength": 25, "required": "required"},
+        {"id":"7", "value": "KY'ZIEN'S HOUSE", "maxlength": 25, "required": ''},
+        {"id":"8", "value": "3152 CERRY TREE DRIVE,", "maxlength": 25, "required": "required"},
+        {"id":"9", "value": "JACKSONVILLE, FLORIDA", "maxlength": 25, "required": "required"},
+        {"id":"10", "value": "RSVP TO MOM", "maxlength": 25, "required": "required"},
+        {"id":"11", "value": "+657-278-990", "maxlength": 25, "required": "required"},
         {"id":"4"},
-        {"id":"12", "value": "SEE YOU THERE", "maxlength": 25, "required": True},
+        {"id":"12", "value": "SEE YOU THERE", "maxlength": 25, "required": "required"},
     ),
 )
 
@@ -215,6 +215,13 @@ def make_video(index=0, form=None, image_file=None):
 
     if len(image_objects) > 0:
         image = Image.open(image_file)
+        # Trim the transparent parts
+        image = image.crop(image.getbbox())
+        # Trim the transparent parts
+        image = np.array(image, dtype=np.uint8)
+        image = cv2.cvtColor(image, cv2.COLOR_RGBA2BGRA)
+        image = Image.fromarray(image)
+        image.save('bg.png')
 
     for text_object in text_objects:
         font = ImageFont.truetype(
@@ -261,7 +268,7 @@ def make_video(index=0, form=None, image_file=None):
             printed_time = time
         count += 1
         # Create a blank canvas with the same size as the frame
-        pil_frame = Image.fromarray(frame).convert("RGB")
+        pil_frame = Image.fromarray(frame).convert("RGBA")
 
         for image_object in image_objects:
             resized_image = image.resize(
@@ -274,10 +281,12 @@ def make_video(index=0, form=None, image_file=None):
                 get_angle(time, image_object["frames"])
             )
             pos, _ = get_position(time, image_object["frames"], rotated_image.size)
-            rotated_image = rotated_image.convert("RGB")
-            b, g, r = rotated_image.split()
-            converted_image = Image.merge("RGB", (r, g, b))
-            pil_frame.paste(converted_image, (round(pos[0]), round(pos[1])))
+            
+
+            # rotated_image = rotated_image.convert("RGBA")
+            # r, g, b, a = rotated_image.split()
+            # converted_image = Image.merge("RGBA", (b, g, r, a))
+            pil_frame.paste(rotated_image, (round(pos[0]), round(pos[1])))
 
         # Create a drawing object
         draw = ImageDraw.Draw(pil_frame)
@@ -316,7 +325,7 @@ def make_video(index=0, form=None, image_file=None):
             )
 
         # Convert the modified PIL Image back to OpenCV format
-        modified_frame = np.array(pil_frame)
+        modified_frame = np.array(pil_frame.convert('RGB'))
 
         output_video.write(modified_frame)
 
