@@ -15,7 +15,7 @@ def for_redirect(request):
 def product_view(request, index):
     if not 0 <= index < video_count:
         return redirect('/video/product/0')
-
+    print(f'request{index}')
     if request.method == 'POST':
         uploaded_image_dir = f"{settings.BASE_DIR}/static/images/uploaded/"
         image_file = request.FILES.get('image')
@@ -26,6 +26,7 @@ def product_view(request, index):
             with open(image, 'wb+') as destination:
                 for chunk in image_file.chunks():
                     destination.write(chunk)
+        print('start makeing video')
         preview_url = make_video(index, request.POST, image)
         if image and os.path.exists(image):
             os.remove(image)
