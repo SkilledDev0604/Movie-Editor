@@ -286,7 +286,8 @@ def make_video(index=0, form=None, image_file=None):
             # rotated_image = rotated_image.convert("RGBA")
             # r, g, b, a = rotated_image.split()
             # converted_image = Image.merge("RGBA", (b, g, r, a))
-            pil_frame.paste(rotated_image, (round(pos[0]), round(pos[1])))
+            pil_frame.paste(rotated_image, (round(pos[0]), round(pos[1])), rotated_image)
+            pil_frame.save('bg.png')
 
         # Create a drawing object
         draw = ImageDraw.Draw(pil_frame)
