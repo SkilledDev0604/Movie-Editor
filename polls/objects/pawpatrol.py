@@ -29,7 +29,7 @@ def get_objects(form, image_file):
             "fontsize": 70,
             "font_file": font_file,
             "color": "white",
-            "stroke_width": 5,
+            "stroke_width": 3,
             "stroke_color": "#c0c0c0",
             "frames": (
                 {"time": 0, "x": x, "y": y, "size": 0.1, "angle": 0},
