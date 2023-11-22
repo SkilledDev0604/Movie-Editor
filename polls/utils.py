@@ -359,11 +359,13 @@ def get_curved_text(
     bg = Image.new("RGBA", (width, height), (255, 255, 255, 0))
     d = ImageDraw.Draw(bg)
     all_width = 0
+    plus_x = font.size*0.1
     for character in text:
-        all_width += d.textsize(character, font)[0]
+        all_width += d.textsize(character, font)[0] + plus_x
     sum_width = 0
     for character in text:
         size = d.textsize(character, font)
+        size = (size[0] + plus_x, size[1])
         length = all_width / 2 - sum_width - size[0] / 2
         sum_width += size[0]
         angle = length / radius
