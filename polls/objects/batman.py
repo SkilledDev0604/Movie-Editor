@@ -266,7 +266,7 @@ def get_objects(form, image_file):
         widht_ratio = width / image.size[0]
         ratio = height_ratio if height_ratio < widht_ratio else widht_ratio
         y = 0.65 * height - image.size[1] * ratio
-        x = 0.18 * width
+        x = 0.2 * width
         image_objects.append(
             {
                 "ratio": ratio,
